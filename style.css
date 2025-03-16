@@ -1,22 +1,57 @@
-.item-a {
-    grid-area: header;
-  }
-  .item-b {
-    grid-area: main;
-  }
-  .item-c {
-    grid-area: sidebar;
-  }
-  .item-d {
-    grid-area: footer;
-  }
-  
-  .container {
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Logo */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.logo {
+    width: 50px;
+    height: 60px;
+    margin-left: 10px;
+}
+
+/* Countdown Timer */
+p {
+    text-align: right;
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+/* Grid Container */
+.container {
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px;
-    grid-template-rows: auto;
-    grid-template-areas: 
-      "header header header header"
-      "main main . sidebar"
-      "footer footer footer footer";
-  }
+    grid-template-areas:
+        "a a a a"
+        "b b c c"
+        "d d d"
+        "e f g h i";
+    gap: 10px;
+    padding: 20px;
+}
+
+/* Grid Items */
+.item {
+    background-color: lightblue;
+    border: 2px solid black;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Assigning Items to Grid Areas */
+.item-1 { grid-area: a; }
+.item-2 { grid-area: b; }
+.item-3 { grid-area: c; }
+.item-4 { grid-area: d; }
+.item-5 { grid-area: e; }
+.item-6 { grid-area: f; }
+.item-7 { grid-area: g; }
+.item-8 { grid-area: h; }
+.item-9 { grid-area: i; }
