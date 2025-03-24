@@ -19,8 +19,8 @@ body {
 */
 .header {
     display: flex;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically if there's height */
+    align-items: center; 
+    justify-content: center; 
     text-align: center;
     padding: 20px;
   }
@@ -28,17 +28,17 @@ body {
   .header img {
     width: 50px;
     height: 60px;
-    margin-bottom: 10px; /* Space between image and text */
+    margin-bottom: 10px; 
   }
 
   .scarlettImage {
     position: absolute;
-    top: 100px; /* adjust as needed */
+    top: 100px; 
     left: 50px;
 }
 
 .scarlettImage img {
-    width: 200px; /* or any size */
+    width: 200px; 
     height: auto;
 }
   
@@ -58,7 +58,7 @@ p {
     background: rgb(255, 255, 255);
     margin: 50px auto;
     border: 5px solid black;
-    position: relative; /* Required for absolute positioning inside */
+    position: relative; 
 }
 
   /* https://www2.cs.sfu.ca/CourseCentral/165/common/study-guide/content/css2-positioning.html#:~:text=The%20position%20Property&text=Setting%20position%3A%20absolute%20on%20an,the%20top%20of%20the%20page.&text=That%20will%20display%20like%20this.*/
@@ -68,8 +68,8 @@ p {
     background: rgb(255, 255, 255);
     border: 2px solid black;
     position: absolute;
-    top: 0px; /* Places at the very top */
-    left: 0px; /* Places at the very left */
+    top: 0px; 
+    left: 0px; 
 }
 
 .lounge {
@@ -84,10 +84,24 @@ p {
 
 .hall {
     width: 80px;
-    height: 80px;
+    height: 150px;
     background: rgb(255, 255, 255);
     border: 2px solid black;
     position: absolute;
     top: 0px; 
-    right: 0px;
+    right: 360px;
+}
+
+.ballroomImage {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+
+.ballroomImage img {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 0px; 
+    left: 0px; 
 }
