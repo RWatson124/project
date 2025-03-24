@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 
-/* Header and Logo */
+/* Header and Logo 
 .header {
     display: flex;
     align-items: center;
@@ -16,18 +16,45 @@ body {
     height: 60px;
     margin-left: 10px;
 }
+*/
+.header {
+    display: flex;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically if there's height */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .header img {
+    width: 50px;
+    height: 60px;
+    margin-bottom: 10px; /* Space between image and text */
+  }
+
+  .scarlettImage {
+    position: absolute;
+    top: 100px; /* adjust as needed */
+    left: 50px;
+}
+
+.scarlettImage img {
+    width: 200px; /* or any size */
+    height: auto;
+}
+  
 
 /* Countdown Timer */
 p {
-    text-align: right;
-    font-size: 20px;
-    margin-top: 0px;
-    padding: 10px;
+    text-align: left;
+    font-size: 30px;
+    margin-top: 10px;
+    padding-left: 10px;
 }
 
-.rectangle1 {
-    width: 1000px;
-    height: 500px;
+
+.board {
+    width: 800px;
+    height: 1000px;
     background: rgb(255, 255, 255);
     margin: 50px auto;
     border: 5px solid black;
@@ -35,12 +62,32 @@ p {
 }
 
   /* https://www2.cs.sfu.ca/CourseCentral/165/common/study-guide/content/css2-positioning.html#:~:text=The%20position%20Property&text=Setting%20position%3A%20absolute%20on%20an,the%20top%20of%20the%20page.&text=That%20will%20display%20like%20this.*/
-  .rectangle2 {
-    width: 200px;
-    height: 100px;
+  .ballroom {
+    width: 250px;
+    height: 150px;
     background: rgb(255, 255, 255);
     border: 2px solid black;
     position: absolute;
     top: 0px; /* Places at the very top */
     left: 0px; /* Places at the very left */
+}
+
+.lounge {
+    width: 250px;
+    height: 150px;
+    background: rgb(255, 255, 255);
+    border: 2px solid black;
+    position: absolute;
+    top: 0px; 
+    right: 0px;
+}
+
+.hall {
+    width: 80px;
+    height: 80px;
+    background: rgb(255, 255, 255);
+    border: 2px solid black;
+    position: absolute;
+    top: 0px; 
+    right: 0px;
 }

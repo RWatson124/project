@@ -2,51 +2,56 @@
 <html>
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cluedo</title>
-    
-    <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cluedo</title>
+  
+  <link rel="stylesheet" href="style.css">
 
-    <div class = "header">
-      <h1 style="display: inline;">Cluedo</h1>
-      <img src="thumb.jpg" style="vertical-align: left; width:50px;height:60px;">
-    </div>
+  <p id="demo"></p>
+  <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
 
-    <p id="demo"></p>
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+  
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+  
+      // Time calculations for days, hours, minutes and seconds
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+  
+      // If the count down is over, write some text 
+      if (distance < 0) {
+          clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+</script>
+
+<div class="scarlettImage">
+  <img src="scarlett.jpg" alt="image of scarlett">
+</div>
+  
 </head>
 
 <body>
 
-    <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
+  <div class="header">
+    <img src="thumb.jpg" alt="Cluedo thumbnail">
+    <h1>Cluedo</h1>
+  </div>  
 
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-
-        // Get today's date and time
-        var now = new Date().getTime();
-    
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-    
-        // Time calculations for days, hours, minutes and seconds
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-    
-        // If the count down is over, write some text 
-        if (distance < 0) {
-            clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-      }, 1000);
-</script>
-
-<div class="rectangle1">
-  <div class="rectangle2"></div>
+<div class="board">
+  <div class="ballroom"></div>
+  <div class="lounge"></div>
 </div>
   
 </body>
