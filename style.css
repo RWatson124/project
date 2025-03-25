@@ -37,12 +37,12 @@ body {
 
   .scarlettImage {
     position: absolute;
-    top: 100px; 
+    top: 20px; 
     right: 20px;
 }
 
 .scarlettImage img {
-    width: 200px; 
+    width: 130px; 
     height: auto;
 }
   
@@ -238,4 +238,13 @@ p {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+  }
+
+  hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
   }
