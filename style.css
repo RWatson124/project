@@ -1,3 +1,8 @@
+
+h1{
+    font-family: Futura;
+    font-size: 60px;
+}
 /* General Styling */
 body {
     font-family: Arial, sans-serif;
@@ -22,19 +27,18 @@ body {
     align-items: center; 
     justify-content: center; 
     text-align: center;
-    padding: 20px;
   }
   
   .header img {
     width: 50px;
-    height: 60px;
+    height: auto;
     margin-bottom: 10px; 
   }
 
   .scarlettImage {
     position: absolute;
     top: 100px; 
-    left: 50px;
+    right: 20px;
 }
 
 .scarlettImage img {
@@ -49,6 +53,7 @@ p {
     font-size: 30px;
     margin-top: 10px;
     padding-left: 10px;
+    font-family: Futura;
 }
 
 
@@ -94,8 +99,6 @@ p {
 
 .ballroomImage {
     position: absolute;
-    top: 100px;
-    left: 50px;
 }
 
 .ballroomImage img {
@@ -105,3 +108,134 @@ p {
     top: 0px; 
     left: 0px; 
 }
+
+.loungeImage {
+    position: absolute;
+    top: 0px; 
+    right: 0px; 
+}
+
+.loungeImage img {
+  width: 200px;
+  height: auto;
+  display: block;
+}
+
+.hallImage {
+    position: absolute;
+    top: 0px; 
+    right: 330px; 
+}
+
+.hallImage img {
+  width: 170px;
+  height: auto;
+  display: block;
+}
+
+.billiardImage {
+    position: absolute;
+    top: 400px; 
+    left: 0px; 
+}
+
+.billiardImage img {
+  width: 190px;
+  height: auto;
+  display: block;
+}
+
+.conservatoryImage {
+    position: absolute;
+    bottom: 0px; 
+    left: 0px; 
+}
+
+.conservatoryImage img {
+  width: 260px;
+  height: auto;
+  display: block;
+}
+
+.libraryImage {
+    position: absolute;
+    bottom: 0px; 
+    right: 330px; 
+}
+
+.libraryImage img {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+.kitchenImage {
+    position: absolute;
+    bottom: 0px; 
+    right: 0px; 
+}
+
+.kitchenImage img {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.studyImage {
+    position: absolute;
+    top: 580px; 
+    right: 0px; 
+}
+
+.studyImage img {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.diningImage {
+    position: absolute;
+    top: 300px; 
+    right: 0px; 
+}
+
+.diningImage img {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+.startingSectionImage {
+    position: absolute;
+    top: 400px; 
+    left: 320px; 
+}
+
+.startingSectionImage img {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+.spaces {
+    width: 20px;
+    height: 20px;
+    background: rgb(255, 255, 255);
+    border: 5px solid black;
+    position: relative;
+    top: 0px;
+    left: 200px;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
