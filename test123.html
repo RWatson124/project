@@ -34,6 +34,20 @@
       document.getElementById("demo").innerHTML = "EXPIRED";
       }
     }, 1000);
+
+
+
+// Function to roll the dice
+function rollTheDice() {
+    setTimeout(function () {
+        var randomNumber = Math.floor(Math.random() * 6) + 1;
+
+        document.querySelector(".img1").setAttribute("src",
+            "dice" + randomNumber + ".png");
+    }, 2500);
+}
+
+
 </script>
 <div class="header">
   <img src="thumb.jpg" alt="Cluedo thumbnail">
@@ -94,8 +108,24 @@
 
   <div class="spaces"></div>
 
+
 </div>
 
+<div class="diceSection">
+  <div class="container">
+
+    <div class="dice">
+        <img class="img1" src="dice6.png">
+    </div>
+  </div>
+
+  <div class="container bottom">
+  <button type="button" class="butn"
+      onClick="rollTheDice()">
+      Roll the Dice
+  </button>
+  </div>
+</div>
   
 </body>
 </html>
