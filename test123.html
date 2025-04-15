@@ -1,54 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cluedo</title>
-  
   <link rel="stylesheet" href="style.css">
-
-  <p id="demo"></p>
   <script>
-      // Set the date we're counting down to
-      var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
-
-      // Update the count down every 1 second
-      var x = setInterval(function() {
-
-      // Get today's date and time
+    // Countdown
+    var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
+    var x = setInterval(function () {
       var now = new Date().getTime();
-  
-      // Find the distance between now and the count down date
       var distance = countDownDate - now;
-  
-      // Time calculations for days, hours, minutes and seconds
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-      // Output the result in an element with id="demo"
       document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-  
-      // If the count down is over, write some text 
       if (distance < 0) {
-          clearInterval(x);
-      document.getElementById("demo").innerHTML = "EXPIRED";
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
       }
     }, 1000);
 
-
-
-// Function to roll the dice
-function rollTheDice() {
-    setTimeout(function () {
+    // Dice
+    function rollTheDice() {
+      setTimeout(function () {
         var randomNumber = Math.floor(Math.random() * 6) + 1;
+        document.querySelector(".img1").setAttribute("src", "dice" + randomNumber + ".png");
+      }, 2500);
+    }
+  </script>
+</head>
 
-        document.querySelector(".img1").setAttribute("src",
-            "dice" + randomNumber + ".png");
-    }, 2500);
-}
+<body>
 
-
-</script>
 <div class="header">
   <img src="thumb.jpg" alt="Cluedo thumbnail">
   <h1>Cluedo</h1>
@@ -57,75 +39,48 @@ function rollTheDice() {
 <div class="scarlettImage">
   <img src="scarlett.jpg" alt="image of scarlett">
 </div>
-  
+
+<p id="demo"></p>
 <hr>
-</head>
 
-<body>
-
-
-<div class="board">
-
-  <div class="ballroomImage">
-    <img src="ballroom1.png" alt="ballroom image">
-  </div>
+<div class="board" id="board">
+  <!-- Grid squares will be injected here via JS -->
   
-  <div class="loungeImage">
-    <img src="lounge1.png" alt="lounge image">
-  </div>
-
-  <div class="hallImage">
-    <img src="hall1.png" alt="hall image">
-  </div>
-
-  <div class="billiardImage">
-    <img src="billiardRoom1.jpg" alt="billiard image">
-  </div>
-
-  <div class="conservatoryImage">
-    <img src="conservatory1.png" alt="conservatory image">
-  </div>
-
-  <div class="libraryImage">
-    <img src="library1.png" alt="library image">
-  </div>
-
-  <div class="kitchenImage">
-    <img src="kitchen1.png" alt="kitchen image">
-  </div>
-
-  <div class="studyImage">
-    <img src="study1.png" alt="study image">
-  </div>
-
-  <div class="diningImage">
-    <img src="diningroom.png" alt="dining room image">
-  </div>
-
-  <div class="startingSectionImage">
-    <img src="startingSection.jpg" alt="starting section image">
-  </div>
-
-  <div class="spaces"></div>
-
-
+  <!-- Room Images (positioned absolutely) -->
+  <div class="ballroomImage"><img src="ballroom1.png" alt="ballroom image"></div>
+  <div class="loungeImage"><img src="lounge1.png" alt="lounge image"></div>
+  <div class="hallImage"><img src="hall1.png" alt="hall image"></div>
+  <div class="billiardImage"><img src="billiardRoom1.jpg" alt="billiard image"></div>
+  <div class="conservatoryImage"><img src="conservatory1.png" alt="conservatory image"></div>
+  <div class="libraryImage"><img src="library1.png" alt="library image"></div>
+  <div class="kitchenImage"><img src="kitchen1.png" alt="kitchen image"></div>
+  <div class="studyImage"><img src="study1.png" alt="study image"></div>
+  <div class="diningImage"><img src="diningroom.png" alt="dining room image"></div>
+  <div class="startingSectionImage"><img src="startingSection.jpg" alt="starting section image"></div>
 </div>
 
+<!-- Dice and Roll Button -->
 <div class="diceSection">
   <div class="container">
-
     <div class="dice">
-        <img class="img1" src="dice6.png">
+      <img class="img1" src="dice6.png">
     </div>
   </div>
 
   <div class="container bottom">
-  <button type="button" class="butn"
-      onClick="rollTheDice()">
-      Roll the Dice
-  </button>
+    <button type="button" class="butn" onClick="rollTheDice()">Roll the Dice</button>
   </div>
 </div>
-  
+
+<!-- Inject 500 grid squares into the .board -->
+<script>
+  const board = document.getElementById("board");
+  for (let i = 0; i < 500; i++) {
+    const square = document.createElement("div");
+    square.className = "space";
+    board.appendChild(square);
+  }
+</script>
+
 </body>
 </html>

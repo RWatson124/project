@@ -1,294 +1,238 @@
-
-h1{
-    font-family: Futura;
-    font-size: 60px;
+h1 {
+  font-family: Futura;
+  font-size: 60px;
 }
-/* General Styling */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Header and Logo 
 .header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-.logo {
-    width: 50px;
-    height: 60px;
-    margin-left: 10px;
-}
-*/
-.header {
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    text-align: center;
-  }
-  
-  .header img {
-    width: 50px;
-    height: auto;
-    margin-bottom: 10px; 
-  }
 
-  .scarlettImage {
-    position: absolute;
-    top: 20px; 
-    right: 20px;
+.header img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.scarlettImage {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .scarlettImage img {
-    width: 130px; 
-    height: auto;
+  width: 130px;
+  height: auto;
 }
-  
 
-/* Countdown Timer */
+/* Countdown */
 p {
-    text-align: left;
-    font-size: 30px;
-    margin-top: 10px;
-    padding-left: 10px;
-    font-family: Futura;
+  text-align: left;
+  font-size: 30px;
+  margin-top: 10px;
+  padding-left: 10px;
+  font-family: Futura;
 }
 
-
+/* Game board */
 .board {
-    width: 800px;
-    height: 1000px;
-    background: rgb(255, 255, 255);
-    margin: 50px auto;
-    border: 5px solid black;
-    position: relative; 
+  width: 800px;
+  height: 1000px;
+  background: white;
+  margin: 50px auto;
+  border: 5px solid black;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+  position: relative;
 }
 
-  /* https://www2.cs.sfu.ca/CourseCentral/165/common/study-guide/content/css2-positioning.html#:~:text=The%20position%20Property&text=Setting%20position%3A%20absolute%20on%20an,the%20top%20of%20the%20page.&text=That%20will%20display%20like%20this.*/
-  .ballroom {
-    width: 250px;
-    height: 150px;
-    background: rgb(255, 255, 255);
-    border: 2px solid black;
-    position: absolute;
-    top: 0px; 
-    left: 0px; 
+/* All room containers use absolute positioning */
+.ballroomImage,
+.loungeImage,
+.hallImage,
+.billiardImage,
+.conservatoryImage,
+.libraryImage,
+.kitchenImage,
+.studyImage,
+.diningImage,
+.startingSectionImage {
+  position: absolute;
 }
 
-.lounge {
-    width: 250px;
-    height: 150px;
-    background: rgb(255, 255, 255);
-    border: 2px solid black;
-    position: absolute;
-    top: 0px; 
-    right: 0px;
+/* All room images use this base styling */
+.ballroomImage img,
+.loungeImage img,
+.hallImage img,
+.billiardImage img,
+.conservatoryImage img,
+.libraryImage img,
+.kitchenImage img,
+.studyImage img,
+.diningImage img,
+.startingSectionImage img {
+  display: block;
 }
 
-.hall {
-    width: 80px;
-    height: 150px;
-    background: rgb(255, 255, 255);
-    border: 2px solid black;
-    position: absolute;
-    top: 0px; 
-    right: 360px;
-}
-
-.ballroomImage {
-    position: absolute;
-}
-
+/* Individual room image sizing and positioning */
 .ballroomImage img {
-    width: 200px;
-    height: auto;
-    position: absolute;
-    top: 0px; 
-    left: 0px; 
+  height: 200px;
+  width: 200px;
+  top: 0;
+  left: 0;
+  position: absolute;
 }
 
 .loungeImage {
-    position: absolute;
-    top: 0px; 
-    right: 0px; 
+  top: 0;
+  right: 0;
 }
 
 .loungeImage img {
+  height: 200px;
   width: 200px;
-  height: auto;
-  display: block;
 }
 
 .hallImage {
-    position: absolute;
-    top: 0px; 
-    right: 330px; 
+  top: 0;
+  right: 320px;
 }
 
 .hallImage img {
-  width: 170px;
-  height: auto;
-  display: block;
+  height: 200px;
+  width: 200px;
 }
 
 .billiardImage {
-    position: absolute;
-    top: 400px; 
-    left: 0px; 
+  top: 400px;
+  left: 0;
 }
 
 .billiardImage img {
   width: 190px;
-  height: auto;
-  display: block;
 }
 
 .conservatoryImage {
-    position: absolute;
-    bottom: 0px; 
-    left: 0px; 
+  bottom: 0;
+  left: 0;
 }
 
 .conservatoryImage img {
   width: 260px;
-  height: auto;
-  display: block;
 }
 
 .libraryImage {
-    position: absolute;
-    bottom: 0px; 
-    right: 330px; 
+  bottom: 0;
+  right: 330px;
 }
 
 .libraryImage img {
   width: 140px;
-  height: auto;
-  display: block;
 }
 
 .kitchenImage {
-    position: absolute;
-    bottom: 0px; 
-    right: 0px; 
+  bottom: 0;
+  right: 0;
 }
 
 .kitchenImage img {
-  width: 160px;
-  height: auto;
-  display: block;
+  height: 160px;
+  width: 200px;
 }
 
 .studyImage {
-    position: absolute;
-    top: 580px; 
-    right: 0px; 
+  top: 610px;
+  right: 0;
 }
 
 .studyImage img {
-  width: 180px;
-  height: auto;
-  display: block;
+  height: 150px;
+  width: 200px;
 }
 
 .diningImage {
-    position: absolute;
-    top: 300px; 
-    right: 0px; 
+  top: 320px;
+  right: 0;
 }
 
 .diningImage img {
-  width: 180px;
-  height: auto;
-  display: block;
+  height: 200px;
+  width: 200px;
 }
 
 .startingSectionImage {
-    position: absolute;
-    top: 400px; 
-    left: 320px; 
+  top: 400px;
+  left: 320px;
 }
 
 .startingSectionImage img {
   width: 120px;
-  height: auto;
-  display: block;
 }
 
-.spaces {
-    width: 20px;
-    height: 20px;
-    background: rgb(255, 255, 255);
-    border: 5px solid black;
-    position: relative;
-    top: 0px;
-    left: 200px;
+/* Squares between rooms */
+.space {
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.button {
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: right;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-
-  hr {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-  }
-
-  .container {
-    width: 70%;
-    text-align: left;
+/* Dice + Roll Button */
+.container {
+  width: 70%;
+  text-align: left;
 }
 
 .dice {
-    text-align: center;
-    display: inline-block; 
-    margin: 0px;
-
+  text-align: center;
+  display: inline-block;
+  margin: 0;
 }
 
 .dice img {
-    width: 80px; 
-    height: auto;  
-  }
+  width: 80px;
+  height: auto;
+}
 
 .bottom {
-    padding-top: 0px;
+  padding-top: 0;
 }
 
 .butn {
-    background: #4ecca3;
-    font-family: "Indie Flower", cursive;
-    border-radius: 7px;
-    color: #ffff;
-    font-size: 18px;
-    padding: 0px;
-    text-decoration: none;
+  background: #000000;
+  font-family: "Futura";
+  border-radius: 7px;
+  color: #fff;
+  font-size: 18px;
+  padding: 0px;
+  text-decoration: none;
 }
 
 .butn:hover {
-    background: #232931;
-    text-decoration: none;
+  background: #232931;
+  text-decoration: none;
 }
 
 .diceSection {
-    position: absolute;    
-    top: 300px;             
-    left: 5%;              
-    text-align: center;
-  }
-  
+  position: absolute;
+  top: 300px;
+  left: 5%;
+  text-align: center;
+}
+
+/* Optional: HR */
+hr {
+  margin: 0.5em auto;
+  border-style: inset;
+  border-width: 1px;
+}
