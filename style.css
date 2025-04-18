@@ -7,9 +7,18 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-image: url('background3.png');
+  background-size: cover;         /* Makes it cover the entire screen */
+  background-repeat: no-repeat;   /* Prevents tiling */
+  background-position: center;
 }
 
 .header {
+  background-image: url('frame.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +26,7 @@ body {
 }
 
 .header img {
-  width: 50px;
+  width: 100px;
   height: auto;
   margin-bottom: 10px;
 }
@@ -35,6 +44,7 @@ body {
 
 /* Countdown */
 p {
+  color: #f9f9f9;
   text-align: left;
   font-size: 30px;
   margin-top: 10px;
@@ -229,10 +239,24 @@ p {
 
 .diceSection {
   position: absolute;
-  top: 300px;
-  left: 5%;
-  text-align: center;
+  top: 600px;
+  width: 300px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('diceFrame.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
+.diceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 /* Optional: HR */
 hr {
@@ -404,9 +428,25 @@ hr {
   cursor: pointer;
 }
 
+.popup-content p {
+  color: black;
+}
+
+
 .highlight {
   border: 3px solid yellow;
   box-shadow: 0 0 10px yellow;
 }
 
+.recordIcon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.recordIcon img {
+  width: 70px;
+  height: auto;
+}
 
