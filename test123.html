@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
   <title>Cluedo</title>
   <link rel="stylesheet" href="style.css">
   <script>
@@ -19,13 +21,7 @@
       }
     }, 1000);
 
-    // Dice
-    function rollTheDice() {
-      setTimeout(function () {
-        var randomNumber = Math.floor(Math.random() * 6) + 1;
-        document.querySelector(".img1").setAttribute("src", "dice" + randomNumber + ".png");
-      }, 2500);
-    }
+
   </script>
 </head>
 
@@ -50,13 +46,26 @@
   <div class="ballroomImage"><img src="ballroom1.png" alt="ballroom image"></div>
   <div class="loungeImage"><img src="lounge1.png" alt="lounge image"></div>
   <div class="hallImage"><img src="hall1.png" alt="hall image"></div>
-  <div class="billiardImage"><img src="billiardRoom1.jpg" alt="billiard image"></div>
+  <div class="billiardImage"><img src="billiardRoom1.png" alt="billiard image"></div>
   <div class="conservatoryImage"><img src="conservatory1.png" alt="conservatory image"></div>
   <div class="libraryImage"><img src="library1.png" alt="library image"></div>
   <div class="kitchenImage"><img src="kitchen1.png" alt="kitchen image"></div>
   <div class="studyImage"><img src="study1.png" alt="study image"></div>
   <div class="diningImage"><img src="diningroom.png" alt="dining room image"></div>
   <div class="startingSectionImage"><img src="startingSection.jpg" alt="starting section image"></div>
+  <div class="playerToken" id="playerToken"></div>
+  <div class="Red-square1"></div>
+  <div class="Red-square2"></div>
+  <div class="Red-square3"></div>
+  <div class="Red-square4"></div>
+  <div class="Red-square5"></div>
+  <div class="Red-square6"></div>
+  <div class="Red-square7"></div>
+  <div class="Red-square8"></div>
+  <div class="Red-square9"></div>
+  <div class="Red-square10"></div>
+  <div class="Red-square11"></div>
+
 </div>
 
 <!-- Dice and Roll Button -->
@@ -69,18 +78,144 @@
 
   <div class="container bottom">
     <button type="button" class="butn" onClick="rollTheDice()">Roll the Dice</button>
+    <div class="arrow-controls">
+      <button onclick="move('up')">⬆️</button>
+      <div>
+        <button onclick="move('left')">⬅️</button>
+        <button onclick="move('right')">➡️</button>
+      </div>
+      <button onclick="move('down')">⬇️</button>
+    </div>
+    
   </div>
 </div>
 
+<div id="roomPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <p>You've reached a room. Do you want to enter or continue?</p>
+    <button onclick="enterRoom()">Enter Room</button>
+    <button onclick="continueMoving()">Continue</button>
+  </div>
+</div>
+
+
 <!-- Inject 500 grid squares into the .board -->
 <script>
-  const board = document.getElementById("board");
-  for (let i = 0; i < 500; i++) {
-    const square = document.createElement("div");
-    square.className = "space";
-    board.appendChild(square);
-  }
+  // Countdown Timer
+  var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
+  var x = setInterval(function () {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+
+  window.onload = function () {
+    const board = document.getElementById("board");
+
+    // Inject 500 grid spaces into the board
+    for (let i = 0; i < 500; i++) {
+      const square = document.createElement("div");
+      square.className = "space";
+      board.appendChild(square);
+    }
+
+    // Set starting position of the token
+    let x = 320;
+    let y = 400;
+    const token = document.getElementById("playerToken");
+    token.style.left = `${x}px`;
+    token.style.top = `${y}px`;
+
+    let movesLeft = 0;
+
+    // Room coordinates to trigger popup
+    const triggerPoints = [
+      { x: 0, y: 200, name: "Ballroom" },
+      { x: 360, y: 200, name: "Hall" },
+      { x: 600, y: 200, name: "Lounge" },
+      { x: 600, y: 280, name: "Dining Room (Side Door)" },
+      { x: 560, y: 400, name: "Dining Room (Front Door)" },
+      { x: 600, y: 600, name: "Study" },
+      { x: 560, y: 880, name: "Kitchen" },
+      { x: 440, y: 800, name: "Billard Room" },
+      { x: 160, y: 960, name: "Conservatory" },
+      { x: 200, y: 480, name: "Library" },
+      { x: 320, y: 360, name: "Starting Section" }
+    ];
+
+    // Roll the dice
+    window.rollTheDice = function () {
+      const randomNumber = Math.floor(Math.random() * 6) + 1;
+      document.querySelector(".img1").setAttribute("src", "dice" + randomNumber + ".png");
+
+      movesLeft = randomNumber;
+      alert(`You rolled a ${randomNumber}! Use the arrows to move.`);
+    };
+
+    // Movement logic using top/left
+    window.move = function (direction) {
+      if (movesLeft <= 0) {
+        alert("Roll the dice first!");
+        return;
+      }
+
+      if (direction === 'up') y -= 40;
+      if (direction === 'down') y += 40;
+      if (direction === 'left') x -= 40;
+      if (direction === 'right') x += 40;
+
+      // Apply new position
+      token.style.left = `${x}px`;
+      token.style.top = `${y}px`;
+
+      movesLeft--;
+
+      checkTriggerPoint(x, y);
+
+      if (movesLeft === 0) {
+        alert("No more moves left! Roll again.");
+      }
+    };
+
+    // Check if token reached a trigger point
+    function checkTriggerPoint(x, y) {
+      const match = triggerPoints.find(point =>
+        point.x === x && point.y === y
+      );
+
+      if (match) {
+        document.querySelector("#roomPopup p").textContent =
+          `You've reached the ${match.name}. Do you want to enter or continue?`;
+        showRoomChoice();
+      }
+    }
+
+    window.showRoomChoice = function () {
+      document.getElementById("roomPopup").style.display = "block";
+    };
+
+    window.enterRoom = function () {
+      alert("You have entered the room!");
+      document.getElementById("roomPopup").style.display = "none";
+      movesLeft = 0;
+    };
+
+    window.continueMoving = function () {
+      document.getElementById("roomPopup").style.display = "none";
+    };
+  };
 </script>
+
+
+
+
+
 
 </body>
 </html>

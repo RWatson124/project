@@ -113,12 +113,13 @@ p {
 }
 
 .billiardImage {
-  top: 400px;
-  left: 0;
+  bottom: 0;
+  left: 320px;
 }
 
 .billiardImage img {
-  width: 190px;
+  height: 200px;
+  width: 160px;
 }
 
 .conservatoryImage {
@@ -127,16 +128,18 @@ p {
 }
 
 .conservatoryImage img {
-  width: 260px;
+  height: 248px;
+  width: 204px;
 }
 
 .libraryImage {
-  bottom: 0;
-  right: 330px;
+  top: 400px;
+  left: 0;
 }
 
 .libraryImage img {
-  width: 140px;
+  height: 160px;
+  width: 200px;
 }
 
 .kitchenImage {
@@ -150,13 +153,13 @@ p {
 }
 
 .studyImage {
-  top: 610px;
+  top: 600px;
   right: 0;
 }
 
 .studyImage img {
-  height: 150px;
-  width: 200px;
+  height: 200px;
+  width: 160px;
 }
 
 .diningImage {
@@ -175,6 +178,7 @@ p {
 }
 
 .startingSectionImage img {
+  height: 200px;
   width: 120px;
 }
 
@@ -236,3 +240,173 @@ hr {
   border-style: inset;
   border-width: 1px;
 }
+
+.playerToken {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  position: absolute;
+  top: 400px;
+  left: 320px;
+  z-index: 10;
+  transition: transform 0.4s ease;
+}
+
+
+.arrow-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.arrow-controls div {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow-controls button {
+  font-size: 24px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.Red-square1 {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square2 {
+  position: absolute;
+  top: 200px;
+  left: 360px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square3 {
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square4 {
+  position: absolute;
+  top: 280px;
+  left: 600px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square5 {
+  position: absolute;
+  top: 400px;
+  left: 560px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square6 {
+  position: absolute;
+  top: 600px;
+  left: 600px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square7 {
+  position: absolute;
+  top: 880px; /* 1000 - 120 */
+  left: 560px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square8 {
+  position: absolute;
+  top: 800px; /* 1000 - 200 */
+  left: 440px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square9 {
+  position: absolute;
+  top: 960px;
+  left: 160px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square10 {
+  position: absolute;
+  top: 480px;
+  left: 200px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square11 {
+  position: absolute;
+  top: 360px;
+  left: 320px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: white;
+  padding: 20px;
+  border: 2px solid black;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+
+.popup-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.highlight {
+  border: 3px solid yellow;
+  box-shadow: 0 0 10px yellow;
+}
+
+
