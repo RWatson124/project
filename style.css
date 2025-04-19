@@ -10,6 +10,7 @@ body {
   background-image: url('background3.png');
   background-size: cover;         /* Makes it cover the entire screen */
   background-repeat: no-repeat;   /* Prevents tiling */
+  background-attachment: fixed;
   background-position: center;
 }
 
@@ -447,6 +448,18 @@ hr {
 
 .recordIcon img {
   width: 70px;
+  height: auto;
+}
+
+.cardsIcon {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.cardsIcon img {
+  width: 80px;
   height: auto;
 }
 

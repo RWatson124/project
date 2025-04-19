@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <title>Cluedo</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Countdown
+    var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+
+
+  </script>
+  <div class="recordIcon">
+    <img src="recordIcon.png" alt="Record Icon">
+  </div>
+
+  <div class="cardsIcon">
+    <img src="cards2.png" alt="cards Icon">
+  </div>
+  
+</head>
+
+<body>
+
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+<div class="scarlettImage">
+  <img src="scarlett.jpg" alt="image of scarlett">
+</div>
+
+<p id="demo"></p>
+<hr>
+
+
+
+<!-- Inject 500 grid squares into the .board -->
+<script>
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
