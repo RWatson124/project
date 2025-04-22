@@ -7,30 +7,10 @@
   <title>Cluedo</title>
   <link rel="stylesheet" href="style.css">
   <script>
-    // Countdown
-    var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
-    var x = setInterval(function () {
-      var now = new Date().getTime();
-      var distance = countDownDate - now;
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-      }
-    }, 1000);
 
 
   </script>
-  <div class="recordIcon">
-    <img src="recordIcon.png" alt="Record Icon">
-  </div>
 
-  <div class="cardsIcon">
-    <img src="cards2.png" alt="cards Icon">
-  </div>
-  
 </head>
 
 <body>
@@ -40,17 +20,32 @@
   <h1>Cluedo</h1>
 </div>  
 
-<div class="scarlettImage">
-  <img src="scarlett.jpg" alt="image of scarlett">
-</div>
+
 
 <p id="demo"></p>
 <hr>
 
 
+<div id="cardContainer" class="card-container"></div>
 
-<!-- Inject 500 grid squares into the .board -->
+<div class="continue-button-container">
+    <a href="gameBoard.html" class="start-button">Continue</a>
+</div>  
+
 <script>
+    window.onload = function () {
+  const container = document.getElementById("cardContainer");
+  const cards = JSON.parse(localStorage.getItem("selectedCards")) || [];
+
+  cards.forEach(card => {
+    const img = document.createElement("img");
+    img.src = `cards/${card}`; 
+    img.alt = card;
+    img.className = "card-img";
+    container.appendChild(img);
+  });
+};
+
 
 </script>
 

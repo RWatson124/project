@@ -8,24 +8,58 @@
   <link rel="stylesheet" href="style.css">
   <script>
     // Countdown
-    var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
-    var x = setInterval(function () {
-      var now = new Date().getTime();
-      var distance = countDownDate - now;
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-      }
-    }, 1000);
+    //var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
+    //var x = setInterval(function () {
+      //var now = new Date().getTime();
+      //var distance = countDownDate - now;
+      //var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      //document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+      //if (distance < 0) {
+        //clearInterval(x);
+        //document.getElementById("demo").innerHTML = "EXPIRED";
+      //}
+    //}, 1000);
 
+    // At the top of your <script> in gameBoard.html
 
-  </script>
+    // Check if there's already a saved end time
+    window.addEventListener("DOMContentLoaded", function () {
+  let countDownDate = localStorage.getItem("cluedoEndTime");
+  const now = new Date().getTime();
+
+  // If the saved countdown is missing or already expired
+  if (!countDownDate || parseInt(countDownDate) < now) {
+    countDownDate = now + 10 * 60 * 1000; // 10 minutes from now
+    localStorage.setItem("cluedoEndTime", countDownDate);
+  } else {
+    countDownDate = parseInt(countDownDate);
+  }
+
+  const timer = document.getElementById("demo");
+
+  const x = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    if (distance < 0) {
+      clearInterval(x);
+      if (timer) timer.innerHTML = "EXPIRED";
+    } else {
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (timer) timer.innerHTML = `${minutes}m ${seconds}s`;
+    }
+  }, 1000);
+});
+
+</script>
+
   <div class="recordIcon">
-    <img src="recordIcon.png" alt="Record Icon">
-  </div>
+    <a href="Record.html">
+        <img src="recordIcon.png" alt="Record Icon">
+    </a>
+</div>
 
   <div class="cardsIcon">
     <a href="Cards.html">
@@ -44,8 +78,9 @@
 </div>  
 
 <div class="scarlettImage">
-  <img src="scarlett.jpg" alt="image of scarlett">
-</div>
+    <img id="characterImage" src="scarlet.png" alt="Character image">
+  </div>
+  
 
 <p id="demo"></p>
 <hr>
@@ -112,24 +147,134 @@
   </div>
 </div>
 
+<div id="guessPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <p>Make your guess:</p>
+  
+      <label for="guessCharacter">Character:</label>
+      <select id="guessCharacter">
+        <option>Mrs White</option>
+        <option>Reverend Green</option>
+        <option>Mrs Peacock</option>
+        <option>Professor Plum</option>
+        <option>Miss Scarlett</option>
+        <option>Colonel Mustard</option>
+      </select><br><br>
+  
+      <label for="guessWeapon">Weapon:</label>
+      <select id="guessWeapon">
+        <option>Candlestick</option>
+        <option>Dagger</option>
+        <option>Lead Pipe</option>
+        <option>Revolver</option>
+        <option>Rope</option>
+        <option>Spanner</option>
+      </select><br><br>
+  
+  
+      <button onclick="submitGuess()">Guess</button>
+      <button onclick="closeGuessPopup()">Return to Game Board</button>
+    </div>
+  </div>
+
+  <div id="accusationPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <p>You are in the Starting Section. Make your final accusation:</p>
+  
+      <label for="accuseCharacter">Character:</label>
+      <select id="accuseCharacter">
+        <option>Mrs White</option>
+        <option>Reverend Green</option>
+        <option>Mrs Peacock</option>
+        <option>Professor Plum</option>
+        <option>Miss Scarlett</option>
+        <option>Colonel Mustard</option>
+      </select><br><br>
+  
+      <label for="accuseWeapon">Weapon:</label>
+      <select id="accuseWeapon">
+        <option>Candlestick</option>
+        <option>Dagger</option>
+        <option>Lead Pipe</option>
+        <option>Revolver</option>
+        <option>Rope</option>
+        <option>Spanner</option>
+      </select><br><br>
+  
+      <label for="accuseRoom">Room:</label>
+      <select id="accuseRoom">
+        <option>Ballroom</option>
+        <option>Billiard Room</option>
+        <option>Conservatory</option>
+        <option>Dining Room</option>
+        <option>Hall</option>
+        <option>Kitchen</option>
+        <option>Lounge</option>
+        <option>Library</option>
+        <option>Study</option>
+      </select><br><br>
+  
+      <button onclick="checkAccusation()">Make Accusation</button>
+      <button onclick="closeAccusation()">Return to Game Board</button>
+    </div>
+  </div>
+  
+  
+
 
 <!-- Inject 500 grid squares into the .board -->
 <script>
-  // Countdown Timer
-  var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
-  var x = setInterval(function () {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("demo").innerHTML = "EXPIRED";
+
+    let currentRoom = "";
+    let lastRoomEntered = "";
+
+    const suspects = [
+  "Mrs White", "Reverend Green", "Mrs Peacock",
+  "Professor Plum", "Miss Scarlett", "Colonel Mustard"
+];
+
+const weapons = [
+  "Candlestick", "Dagger", "Lead Pipe",
+  "Revolver", "Rope", "Spanner"
+];
+
+const rooms = [
+  "Ballroom", "Billiard Room", "Conservatory", "Dining Room",
+  "Hall", "Kitchen", "Lounge", "Library", "Study"
+];
+
+let secretSuspect = "";
+let secretWeapon = "";
+let secretRoom = "";
+
+let remainingSuspects = [...suspects];
+let remainingWeapons = [...weapons];
+let remainingRooms = [...rooms];
+
+
+function pickSecretCards() {
+  secretSuspect = suspects[Math.floor(Math.random() * suspects.length)];
+  secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+  secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
+
+  console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
+
+  // Remove the solution cards from the remaining options
+  remainingSuspects = suspects.filter(s => s !== secretSuspect);
+  remainingWeapons = weapons.filter(w => w !== secretWeapon);
+  remainingRooms = rooms.filter(r => r !== secretRoom);
+}
+
+
+
+
+    const selectedCharacter = localStorage.getItem("selectedCharacter");
+    if (selectedCharacter) {
+      document.getElementById("characterImage").src = selectedCharacter;
     }
-  }, 1000);
 
   window.onload = function () {
+    pickSecretCards();
     const board = document.getElementById("board");
 
     // Inject 500 grid spaces into the board
@@ -199,31 +344,107 @@
 
     // Check if token reached a trigger point
     function checkTriggerPoint(x, y) {
-      const match = triggerPoints.find(point =>
-        point.x === x && point.y === y
-      );
+    const match = triggerPoints.find(point =>
+    point.x === x && point.y === y
+    );
 
-      if (match) {
-        document.querySelector("#roomPopup p").textContent =
-          `You've reached the ${match.name}. Do you want to enter or continue?`;
-        showRoomChoice();
-      }
+    if (match) {
+        astRoomEntered = match.name;
+        if (match.name === "Starting Section") {
+            document.querySelector("#roomPopup").style.display = "none";
+            document.querySelector("#accusationPopup").style.display = "block";
+        } else {
+            document.querySelector("#roomPopup p").textContent =
+            `You've reached the ${match.name}. Do you want to enter or continue?`;
+            document.getElementById("roomPopup").style.display = "block";
+         }
+       }
     }
+
 
     window.showRoomChoice = function () {
       document.getElementById("roomPopup").style.display = "block";
     };
 
     window.enterRoom = function () {
-      alert("You have entered the room!");
-      document.getElementById("roomPopup").style.display = "none";
-      movesLeft = 0;
+        document.getElementById("roomPopup").style.display = "none";
+        document.getElementById("guessPopup").style.display = "block";
+        
+        // Update room name
+        currentRoom = lastRoomEntered || "a room";
+        document.getElementById("currentRoomText").textContent = `You are in the ${currentRoom}.`;
+        movesLeft = 0;
     };
+
 
     window.continueMoving = function () {
       document.getElementById("roomPopup").style.display = "none";
     };
   };
+
+  window.enterRoom = function () {
+  document.getElementById("roomPopup").style.display = "none";
+  document.getElementById("guessPopup").style.display = "block";
+  movesLeft = 0;
+};
+
+window.closeGuessPopup = function () {
+  document.getElementById("guessPopup").style.display = "none";
+};
+
+window.submitGuess = function () {
+  const character = document.getElementById("guessCharacter").value;
+  const weapon = document.getElementById("guessWeapon").value;
+
+  // Check guess against remaining suspects
+  if (remainingSuspects.includes(character)) {
+    alert(`The card shown to you is: ${character}`);
+    remainingSuspects = remainingSuspects.filter(s => s !== character);
+  }
+
+  // Check guess against remaining weapons
+  else if (remainingWeapons.includes(weapon)) {
+    alert(`The card shown to you is: ${weapon}`);
+    remainingWeapons = remainingWeapons.filter(w => w !== weapon);
+  }
+
+  // Check if current room name contains any of the room names in the list
+  else {
+    const matchedRoom = remainingRooms.find(room => currentRoom.includes(room));
+    if (matchedRoom) {
+      alert(`The card shown to you is: ${matchedRoom}`);
+      remainingRooms = remainingRooms.filter(r => r !== matchedRoom);
+    } else {
+      alert("None of your guesses are in the list.");
+    }
+  }
+
+  document.getElementById("guessPopup").style.display = "none";
+};
+
+
+function checkAccusation() {
+  const char = document.getElementById("accuseCharacter").value;
+  const weapon = document.getElementById("accuseWeapon").value;
+  const room = document.getElementById("accuseRoom").value;
+
+  if (char === secretSuspect && weapon === secretWeapon && room === secretRoom) {
+    alert("Correct! You solved the mystery!");
+    window.location.href = "index.html"; // replace with your homepage
+  } else {
+    alert("Wrong!");
+    document.getElementById("accusationPopup").style.display = "none";
+  }
+}
+
+function closeAccusation() {
+  document.getElementById("accusationPopup").style.display = "none";
+}
+
+
+
+
+
 </script>
 
 

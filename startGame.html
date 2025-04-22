@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <title>Cluedo</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+
+
+  </script>
+  
+</head>
+
+<body>
+
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+<div class="start-button-container">
+    <button class="start-button" onclick="startGame()">Start Game</button>
+</div>  
+
+<p id="demo"></p>
+<hr>
+
+
+<script>
+    function startGame() {
+    const allCards = [];
+    for (let i = 1; i <= 21; i++) {
+      allCards.push(`card${i}.png`);
+    }
+
+    const shuffled = allCards.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 6);
+
+    localStorage.setItem("selectedCards", JSON.stringify(selected));
+    window.location.href = "characterSelection.html";
+  }
+</script>
+
+
+
+
+
+
+</body>
+</html>
