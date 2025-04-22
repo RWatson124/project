@@ -1,0 +1,173 @@
+                /*BACKGROUND/LAYOUT*/
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding-left: 10%;
+    background-color: #4a2c30; 
+    font-family: 'Times New Roman', serif;
+
+    background-image: url('h&i images/home_backdrop.jpeg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+
+}
+
+
+img {
+    width: 100%;
+    height: auto;
+}
+  
+.img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+                /*START BUTTON*/
+.home-button {
+    display: inline-block;
+    padding: 20px 35px;
+    font-size: 1.8rem;
+    font-weight: normal;
+    font-style: italic;
+    color: rgb(184, 183, 155);
+    background-color: #61513f;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(44, 22, 22, 0.9);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: auto;
+    max-width: 300px;
+    position: relative;
+    z-index: 10;
+}
+
+.home-button:hover {
+    background-color: #534637; 
+}
+
+.home-button:active {
+    transform: translateY(1px); 
+}
+
+ 
+                /*SIGN IN BUTTON*/
+.signin-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    font-style: italic;
+    color: rgb(184, 183, 155);
+    background-color: #61513f;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(44, 22, 22, 0.9);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: auto;
+    max-width: 300px;
+    position: relative;
+    z-index: 10;
+}
+
+.signin-button:hover {
+    background-color: #534637; 
+}
+
+.signin-button:active {
+    transform: translateY(1px); 
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 20px; 
+    padding-left: 10%;
+    width: 80%;
+    max-width: 600px;
+}
+
+                /*LOGO*/
+.logo {
+    width: 90%;
+    height: auto;
+    z-index: 5;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px #79644d) drop-shadow(0 0 10px #79644d);
+    }
+    to {
+        filter: drop-shadow(0 0 15px #6b3d3b) drop-shadow(0 0 30px #6b3d3b);
+    }
+}
+
+
+                /*IMAGE*/
+.image {
+    width: 50%;
+    height: 100%;
+    max-width: 50%;
+    margin: 0;
+    float: right;
+    position: sticky;
+    right: 0;
+    padding-right: 0;
+    z-index: 1;
+}
+
+               /*QUESTION MARK IMAGE*/
+ .question-mark {
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    width: auto;
+    height: 300px;
+    opacity: 0.4;
+    z-index: 1;
+ }
+
+               /*HAND PRINT IMAGE*/
+ .hand-print {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: auto;
+    height: 220px;
+    opacity: 0.55;
+    z-index: 2;
+ }
+
+
+                /*SETTINGS BUTTON*/
+.settings {
+        position: absolute;
+        top: 10px; 
+        left: 10px; 
+        width: 90px; 
+        height: 90px; 
+        background: url('h&i images/settings.png') no-repeat center center; 
+        background-size: contain; 
+        border: none; 
+        cursor: pointer; 
+        z-index: 1000; 
+        opacity: 0.8;
+
+    }
+    
+    .settings:active {
+        transform: translateY(1px); 
+    }
+
+    .settings:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
