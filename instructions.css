@@ -53,13 +53,13 @@
     width: 60%; 
     height: 60%;
     padding: 20px;
-    background-image: url('h&i images/textbox.jpeg');
+    background-image: url('HI images/textbox.jpeg');
     background-size: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(246, 241, 241, 0.2); 
     text-align: center;
     border: 20px solid transparent;
-    border-image: url('h&i images/border.jpeg') 30 round; 
+    border-image: url('HI images/border.jpeg') 30 round; 
     overflow-y: auto; 
 }
 
@@ -164,7 +164,7 @@
     top: 10px;
     left: 10px;
     width: 45px;
-    height : 38px;
+    height: 38px;
     padding: 50px 10px;
     cursor: pointer;
     z-index: 8;
