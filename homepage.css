@@ -9,7 +9,7 @@ body {
     background-color: #4a2c30; 
     font-family: 'Times New Roman', serif;
 
-    background-image: url('h&i images/home_backdrop.jpeg'); 
+    background-image: url('HI images/home_backdrop.jpeg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center; 
@@ -154,7 +154,7 @@ img {
         left: 10px; 
         width: 90px; 
         height: 90px; 
-        background: url('h&i images/settings.png') no-repeat center center; 
+        background: url('HI images/settings.png') no-repeat center center; 
         background-size: contain; 
         border: none; 
         cursor: pointer; 
