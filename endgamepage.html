@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="main-heading"> GAME OVER ! </h1>
+    <div class="endpage-container">
+        <h1 class="endpage-main-heading"> GAME OVER ! </h1>
 
-        <h2 id="game-result" class="sub-heading">Loading Outcome... </h2>
+        <h2 id="game-result" class="endpage-sub-heading">Loading Outcome... </h2>
 
-        <div class="results-display">
+        <div class="endpage-results-display">
             <h2> Game Highlights </h2>
             <ul>
                 <li><strong>Winner: </strong> Reverand Green</li>
@@ -19,23 +19,20 @@
             </ul>
         </div>
 
-        <div class="visuals">
+        <div class="endpage-visuals">
             <audio id="end-soundtrack" controls>
                 <source src="soundtrack.mp3.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
 
-            <button id="play-audio-btn" style="display: none;">Play Music</button>
+            <button id="endpage-play-audio-btn" style="display: none;">Play Music</button>
 
         </div>
         
-        <button id="restart-button" class="play-again-btn"> Play Again? </button>
+        <button id="restart-button" class="endpage-play-again-btn"> Play Again? </button>
     </div>
 
-    <script src="cluedo.js"></script>
-
-    <div class="stars" ></div>
-    <div class="twinkling"></div>
+    <script src="endgamepage.js"></script>
 
 </body>
 </html>

@@ -78,25 +78,6 @@ body {
     border-radius: 6px;
 }
 
-.stars, .twinkling {
-    position: fixed;
-    top: 0; left: 0;
-    right: 0; bottom: 0;
-    z-index: -1;
-    display: block;
-}
-
-.stars {
-    background: url('https://images.unsplash.com/photo-1520034475321-cbe63696469a?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2UlMjBzdGFyc3xlbnwwfHwwfHx8MA%3D%3D') repeat;
-    opacity: 0.1;
-    animation: moveStars 200s linear infinite;
-}
-
-@keyframes moveStars {
-    from { background-position: 0 0; }
-    to { background-position: -10000px 5000px; }
-}
-
 .game-result {
     color: bisque;
 }
