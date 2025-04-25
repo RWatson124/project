@@ -70,13 +70,24 @@
 
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".toggle-cell").forEach(cell =>
-    cell.addEventListener("click", () =>
-      cell.textContent = cell.textContent === "X" ? "" : "X"
-    )
-  );
-});
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get all elements with the class "toggle-cell"
+      const cells = document.querySelectorAll(".toggle-cell");
+
+      // Loop through each cell
+      cells.forEach(function (cell) {
+        // When the cell is clicked
+        cell.addEventListener("click", function () {
+          // Toggle the content between "X" and blank
+          if (cell.textContent === "X") {
+            cell.textContent = "";
+          } else {
+            cell.textContent = "X";
+          }
+        });
+      });
+    });
+
 
   </script>
   

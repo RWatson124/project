@@ -3,6 +3,15 @@ h1 {
   font-size: 60px;
 }
 
+.characterAndCards-heading {
+  text-align: center;
+  font-family: Futura;
+  font-size: 32px;
+  margin-top: 20px;
+  color: #f9f9f9;
+}
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -299,6 +308,12 @@ hr {
   background-color: #f9f9f9;
   border-radius: 5px;
 }
+
+.arrow-controls button img {
+  width: 30px;  /* adjust size as needed */
+  height: auto;
+}
+
 
 .Red-square1 {
   position: absolute;

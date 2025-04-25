@@ -8,18 +8,6 @@
   <link rel="stylesheet" href="style.css">
   <script>
     // Countdown
-    //var countDownDate = new Date(new Date().getTime() + 10 * 60000).getTime();
-    //var x = setInterval(function () {
-      //var now = new Date().getTime();
-      //var distance = countDownDate - now;
-      //var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      //document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-      //if (distance < 0) {
-        //clearInterval(x);
-        //document.getElementById("demo").innerHTML = "EXPIRED";
-      //}
-    //}, 1000);
 
     // Check if there's already a saved end time
     window.addEventListener("DOMContentLoaded", function () {
@@ -123,17 +111,25 @@
 
     <div class="container bottom">
       <button type="button" class="butn" onClick="rollTheDice()">Roll the Dice</button>
+      
       <div class="arrow-controls">
-        <button onclick="move('up')">⬆️</button>
+        <button onclick="move('up')">
+          <img src="upArrow.png" alt="Up" />
+        </button>
         <div>
-          <button onclick="move('left')">⬅️</button>
-          <button onclick="move('right')">➡️</button>
+          <button onclick="move('left')">
+            <img src="leftArrow.png" alt="Left" />
+          </button>
+          <button onclick="move('right')">
+            <img src="rightArrow.png" alt="Right" />
+          </button>
         </div>
-        <button onclick="move('down')">⬇️</button>
+        <button onclick="move('down')">
+          <img src="downArrow.png" alt="Down" />
+        </button>
       </div>
     </div>
-  </div>
-</div>
+    
 
 
 
@@ -226,42 +222,33 @@
     let currentRoom = "";
     let lastRoomEntered = "";
 
-    const suspects = [
-  "Mrs White", "Reverend Green", "Mrs Peacock",
-  "Professor Plum", "Miss Scarlett", "Colonel Mustard"
-];
+    const suspects = ["Mrs White", "Reverend Green", "Mrs Peacock", "Professor Plum", "Miss Scarlett", "Colonel Mustard"];
 
-const weapons = [
-  "Candlestick", "Dagger", "Lead Pipe",
-  "Revolver", "Rope", "Spanner"
-];
+    const weapons = ["Candlestick", "Dagger", "Lead Pipe", "Revolver", "Rope", "Spanner"];
 
-const rooms = [
-  "Ballroom", "Billiard Room", "Conservatory", "Dining Room",
-  "Hall", "Kitchen", "Lounge", "Library", "Study"
-];
+    const rooms = ["Ballroom", "Billiard Room", "Conservatory", "Dining Room", "Hall", "Kitchen", "Lounge", "Library", "Study"];
 
-let secretSuspect = "";
-let secretWeapon = "";
-let secretRoom = "";
+    let secretSuspect = "";
+    let secretWeapon = "";
+    let secretRoom = "";
 
-let remainingSuspects = [...suspects];
-let remainingWeapons = [...weapons];
-let remainingRooms = [...rooms];
+    let remainingSuspects = [...suspects];
+    let remainingWeapons = [...weapons];
+    let remainingRooms = [...rooms];
 
 
-function pickSecretCards() {
-  secretSuspect = suspects[Math.floor(Math.random() * suspects.length)];
-  secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
-  secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
+    function pickSecretCards() {
+      secretSuspect = suspects[Math.floor(Math.random() * suspects.length)];
+      secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+      secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
 
-  console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
+      console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
 
-  // Remove the solution cards from the remaining options
-  remainingSuspects = suspects.filter(s => s !== secretSuspect);
-  remainingWeapons = weapons.filter(w => w !== secretWeapon);
-  remainingRooms = rooms.filter(r => r !== secretRoom);
-}
+      // Remove the solution cards from the remaining options
+      remainingSuspects = suspects.filter(s => s !== secretSuspect);
+      remainingWeapons = weapons.filter(w => w !== secretWeapon);
+      remainingRooms = rooms.filter(r => r !== secretRoom);
+    }
 
 
 
@@ -342,12 +329,10 @@ function pickSecretCards() {
 
     // Check if token reached a trigger point
     function checkTriggerPoint(x, y) {
-    const match = triggerPoints.find(point =>
-    point.x === x && point.y === y
-    );
+    const match = triggerPoints.find(point => point.x === x && point.y === y);
 
     if (match) {
-        astRoomEntered = match.name;
+        lastRoomEntered = match.name;
         if (match.name === "Starting Section") {
             document.querySelector("#roomPopup").style.display = "none";
             document.querySelector("#accusationPopup").style.display = "block";
