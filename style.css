@@ -10,6 +10,7 @@ body {
   background-image: url('background3.png');
   background-size: cover;         /* Makes it cover the entire screen */
   background-repeat: no-repeat;   /* Prevents tiling */
+  background-attachment: fixed;
   background-position: center;
 }
 
@@ -450,3 +451,128 @@ hr {
   height: auto;
 }
 
+.cardsIcon {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.cardsIcon img {
+  width: 80px;
+  height: auto;
+}
+
+.start-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* centers vertically */
+}
+
+.start-button {
+  padding: 15px 30px;
+  font-size: 24px;
+  font-family: "Futura", sans-serif;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #333;
+}
+
+.character-gallery {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.character-gallery img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.character-gallery img:hover {
+  transform: scale(1.1);
+}
+
+.continue-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; /* adjust spacing as needed */
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card-img {
+  width: 120px;
+  height: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.record-table {
+  max-width: 500px;
+  margin: 40px auto;
+  font-family: Futura;
+  background-color: white;
+}
+
+.record-table h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.record-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.record-table th {
+  text-align: left;
+  font-size: 18px;
+  padding: 8px;
+  background-color: #f3f3f3;
+}
+
+.record-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  height: 30px;
+}
+
+.toggle-cell {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  user-select: none;
+}
+
+.homeIcon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.homeIcon img {
+  width: 70px;
+  height: auto;
+}
