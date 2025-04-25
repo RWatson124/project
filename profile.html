@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+    <script defer src="JavaScript/profile.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md bg-gray-800 p-8 rounded-xl shadow-lg">
+        <div id="profile-container" class="hidden">
+            <div class="flex flex-col items-center">
+                <img id="user-pic" class="w-24 h-24 rounded-full mb-4" alt="User Profile Picture" />
+                <h2 id="user-name" class="text-2xl font-bold"></h2>
+                <p id="user-email" class="text-gray-400 mb-4"></p>
+                <p><strong>Victories:</strong> <span id="user-wins">0</span></p>
+                <button id="logout" class="mt-6 w-full bg-red-600 hover:bg-red-700 py-2 rounded">Log Out</button>
+            </div>
+        </div>
+        <div id="loading" class="text-center">Loading user profile...</div>
+    </div>
+</body>
+</html>

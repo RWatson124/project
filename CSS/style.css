@@ -1,0 +1,578 @@
+h1 {
+  font-family: Futura;
+  font-size: 60px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('background3.png');
+  background-size: cover;         /* Makes it cover the entire screen */
+  background-repeat: no-repeat;   /* Prevents tiling */
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.header {
+  background-image: url('frame.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.header img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.scarlettImage {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.scarlettImage img {
+  width: 130px;
+  height: auto;
+}
+
+/* Countdown */
+p {
+  color: #f9f9f9;
+  text-align: left;
+  font-size: 30px;
+  margin-top: 10px;
+  padding-left: 10px;
+  font-family: Futura;
+}
+
+/* Game board */
+.board {
+  width: 800px;
+  height: 1000px;
+  background: white;
+  margin: 50px auto;
+  border: 5px solid black;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(25, 1fr);
+  position: relative;
+}
+
+/* All room containers use absolute positioning */
+.ballroomImage,
+.loungeImage,
+.hallImage,
+.billiardImage,
+.conservatoryImage,
+.libraryImage,
+.kitchenImage,
+.studyImage,
+.diningImage,
+.startingSectionImage {
+  position: absolute;
+}
+
+/* All room images use this base styling */
+.ballroomImage img,
+.loungeImage img,
+.hallImage img,
+.billiardImage img,
+.conservatoryImage img,
+.libraryImage img,
+.kitchenImage img,
+.studyImage img,
+.diningImage img,
+.startingSectionImage img {
+  display: block;
+}
+
+/* Individual room image sizing and positioning */
+.ballroomImage img {
+  height: 200px;
+  width: 200px;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.loungeImage {
+  top: 0;
+  right: 0;
+}
+
+.loungeImage img {
+  height: 200px;
+  width: 200px;
+}
+
+.hallImage {
+  top: 0;
+  right: 320px;
+}
+
+.hallImage img {
+  height: 200px;
+  width: 200px;
+}
+
+.billiardImage {
+  bottom: 0;
+  left: 320px;
+}
+
+.billiardImage img {
+  height: 200px;
+  width: 160px;
+}
+
+.conservatoryImage {
+  bottom: 0;
+  left: 0;
+}
+
+.conservatoryImage img {
+  height: 248px;
+  width: 204px;
+}
+
+.libraryImage {
+  top: 400px;
+  left: 0;
+}
+
+.libraryImage img {
+  height: 160px;
+  width: 200px;
+}
+
+.kitchenImage {
+  bottom: 0;
+  right: 0;
+}
+
+.kitchenImage img {
+  height: 160px;
+  width: 200px;
+}
+
+.studyImage {
+  top: 600px;
+  right: 0;
+}
+
+.studyImage img {
+  height: 200px;
+  width: 160px;
+}
+
+.diningImage {
+  top: 320px;
+  right: 0;
+}
+
+.diningImage img {
+  height: 200px;
+  width: 200px;
+}
+
+.startingSectionImage {
+  top: 400px;
+  left: 320px;
+}
+
+.startingSectionImage img {
+  height: 200px;
+  width: 120px;
+}
+
+/* Squares between rooms */
+.space {
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Dice + Roll Button */
+.container {
+  width: 70%;
+  text-align: left;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+  margin: 0;
+}
+
+.dice img {
+  width: 80px;
+  height: auto;
+}
+
+.bottom {
+  padding-top: 0;
+}
+
+.butn {
+  background: #000000;
+  font-family: "Futura";
+  border-radius: 7px;
+  color: #fff;
+  font-size: 18px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.butn:hover {
+  background: #232931;
+  text-decoration: none;
+}
+
+.diceSection {
+  position: absolute;
+  top: 600px;
+  width: 300px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('diceFrame.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.diceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Optional: HR */
+hr {
+  margin: 0.5em auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.playerToken {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  position: absolute;
+  top: 400px;
+  left: 320px;
+  z-index: 10;
+  transition: transform 0.4s ease;
+}
+
+
+.arrow-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.arrow-controls div {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow-controls button {
+  font-size: 24px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.Red-square1 {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square2 {
+  position: absolute;
+  top: 200px;
+  left: 360px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square3 {
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square4 {
+  position: absolute;
+  top: 280px;
+  left: 600px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square5 {
+  position: absolute;
+  top: 400px;
+  left: 560px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square6 {
+  position: absolute;
+  top: 600px;
+  left: 600px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square7 {
+  position: absolute;
+  top: 880px; /* 1000 - 120 */
+  left: 560px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square8 {
+  position: absolute;
+  top: 800px; /* 1000 - 200 */
+  left: 440px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square9 {
+  position: absolute;
+  top: 960px;
+  left: 160px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square10 {
+  position: absolute;
+  top: 480px;
+  left: 200px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.Red-square11 {
+  position: absolute;
+  top: 360px;
+  left: 320px;
+  height: 38px;
+  width: 38px;
+  background-color: #ffffff;
+  border: 2px solid #fd0202;
+}
+
+.popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: white;
+  padding: 20px;
+  border: 2px solid black;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+
+.popup-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.popup-content p {
+  color: black;
+}
+
+
+.highlight {
+  border: 3px solid yellow;
+  box-shadow: 0 0 10px yellow;
+}
+
+.recordIcon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.recordIcon img {
+  width: 70px;
+  height: auto;
+}
+
+.cardsIcon {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.cardsIcon img {
+  width: 80px;
+  height: auto;
+}
+
+.start-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* centers vertically */
+}
+
+.start-button {
+  padding: 15px 30px;
+  font-size: 24px;
+  font-family: "Futura", sans-serif;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #333;
+}
+
+.character-gallery {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.character-gallery img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.character-gallery img:hover {
+  transform: scale(1.1);
+}
+
+.continue-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; /* adjust spacing as needed */
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card-img {
+  width: 120px;
+  height: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.record-table {
+  max-width: 500px;
+  margin: 40px auto;
+  font-family: Futura;
+  background-color: white;
+}
+
+.record-table h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.record-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.record-table th {
+  text-align: left;
+  font-size: 18px;
+  padding: 8px;
+  background-color: #f3f3f3;
+}
+
+.record-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  height: 30px;
+}
+
+.toggle-cell {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  user-select: none;
+}
+
+.homeIcon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000; /* ensures it stays on top of other elements */
+}
+
+.homeIcon img {
+  width: 70px;
+  height: auto;
+}
