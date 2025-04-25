@@ -3,7 +3,7 @@ const playAgainBtn = document.getElementById("restart-button");
 if (playAgainBtn) {
   playAgainBtn.addEventListener("click", () => {
     // reload the current page
-    location.reload();
+    window.location.href = "startGame.html";
   });
 }
 
