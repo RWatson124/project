@@ -1,4 +1,4 @@
-// page reload when restart button is clicked
+// redirect user to start page if they click the restart button
 const playAgainBtn = document.getElementById("restart-button");
 if (playAgainBtn) {
   playAgainBtn.addEventListener("click", () => {
@@ -28,10 +28,14 @@ window.addEventListener('load', () => {
 
 function endGame() {
   const resultElement = document.getElementById("game-result");
+  const suspect = localStorage.getItem("cluedoSuspect");
+  const weapon = localStorage.getItem("cluedoWeapon");
+  const room = localStorage.getItem("cluedoRoom");
 
-  const params = new URLSearchParams(window.location.search);
-  const result = params.get("result"); // win or lose
+  // get game result from local storage
+  const result = localStorage.getItem("cluedoGameResult");
 
+  // update header based on win/lose
   if (result === "win") {
     resultElement.textContent = "You won!"
     resultElement.classList.add("win");
@@ -44,6 +48,14 @@ function endGame() {
     resultElement.textContent = "Game Result Undecided";
   }
 }
+
+// update game highlights section with correct guess
+const highlightsList = document.querySelector('.endpage-results-display ul');
+highlightsList.innerHTML = `
+    <li><strong>Winner: </strong> ${suspect}</li>
+    <li><strong>Turns Taken: </strong> [Insert Turns Taken Here]</li>
+    <li><strong>Correct Guess: </strong> ${suspect} with the ${weapon} in the ${room}</li>
+  `;
 
 endGame();
 
