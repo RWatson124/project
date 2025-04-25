@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 body {
-    background-color: #1a202c;
+    background-color: #1a202c; 
     color: white;
     display: flex;
     flex-direction: column;
@@ -53,7 +52,7 @@ body {
     background-color: #2d3748; 
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     width: 100%;
     max-width: 400px;
     text-align: center;
@@ -77,39 +76,5 @@ body {
 }
 
 #login:hover {
-   background-color: #1e40af; 
+    background-color: #1e40af; 
 }
-=======
-/* The navbar container */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* Navbar links */
-.topnav a {
-  float: left;
-  display: inline-block
-      ;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Links - change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.login a {
-    text-align: right;
-}
-
-body {
-    text-align: center;
-    opacity: inherit;
-}
-
->>>>>>> ff6e88166d90cbb87604dde2430d1344eb653bfc
