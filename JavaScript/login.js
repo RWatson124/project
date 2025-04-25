@@ -1,13 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const auth0 = await createAuth0Client({
-        domain: "dev-xuv6q852cpf6upat.uk.auth0.com",
-<<<<<<< HEAD
-        client_id: "MIjcyVi3C2wQEnj2PIvKwYpk6adXHSq1",
+        domain: "fadeoutnetworks.us.auth0.com",
+        client_id: "v8PIBvTSo9fq45Rqs6nVuBKKnk2y4UkL",
         redirect_uri: window.location.origin,
-=======
-        client_id: "gi4vRUDc4fsZnK2siQFhknCgkSDHgZlL",
-        redirect_uri: window.location.origin
->>>>>>> ff6e88166d90cbb87604dde2430d1344eb653bfc
     });
 
     if (window.location.search.includes("code=")) {
