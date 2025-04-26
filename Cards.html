@@ -35,16 +35,35 @@
 <script>
     window.onload = function () {
   const container = document.getElementById("cardContainer");
-  const cards = JSON.parse(localStorage.getItem("selectedCards")) || [];
 
-  cards.forEach(card => {
+  // Generate an array of card filenames
+  const allCards = [];
+  for (let i = 1; i <= 21; i++) {
+    allCards.push(`card${i}.png`);
+  }
+
+  // Shuffle cards
+  const shuffled = allCards.sort(() => 0.5 - Math.random());
+
+  // Pick 6 cards
+  const selected = shuffled.slice(0, 6);
+
+  // Save to localStorage if needed
+  localStorage.setItem("selectedCards", JSON.stringify(selected));
+
+  // Display selected cards
+  selected.forEach(card => {
     const img = document.createElement("img");
-    img.src = `cards/${card}`; 
+    img.src = `cards/${card}`;
     img.alt = card;
     img.className = "card-img";
     container.appendChild(img);
   });
 };
+
+
+
+
 
 
 </script>
