@@ -72,6 +72,8 @@
 
 <body>
 
+<audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+
 <!-- display thumb print icon -->  
 <div class="header">
   <img src="thumb.jpg" alt="Cluedo thumbnail">
@@ -353,17 +355,26 @@
         return;
       }
 
-      if (direction === 'up') y -= 40;
-      if (direction === 'down') y += 40;
-      if (direction === 'left') x -= 40;
-      if (direction === 'right') x += 40;
+      // Set the movement step
+        const step = 40;
 
-      // Apply new position
+      // Board size limits (adjust if needed)
+      const minX = 0;
+      const maxX = 600; // Example: 15 spaces * 40px
+      const minY = 0;
+      const maxY = 960; // Example: 24 spaces * 40px
+
+      // Try to move based on direction, but don't allow out of bounds
+      if (direction === 'up' && y - step >= minY) y -= step;
+      if (direction === 'down' && y + step <= maxY) y += step;
+      if (direction === 'left' && x - step >= minX) x -= step;
+      if (direction === 'right' && x + step <= maxX) x += step;
+
+      // Update token position
       token.style.left = `${x}px`;
       token.style.top = `${y}px`;
 
       movesLeft--;
-
       //determine whether the player has landed on a red square
       checkTriggerPoint(x, y);
 
