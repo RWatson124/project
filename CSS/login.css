@@ -1,17 +1,20 @@
+/* General Page Styles */
 body {
-    background-color: #1a202c; 
+    background-color: #1a202c; /* gray-900 */
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    font-family: sans-serif;
 }
 
+/* Navbar */
 .navbar {
-    background-color: #2d3748; 
+    background-color: #2d3748; /* gray-800 */
     padding: 1rem 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .nav-content {
@@ -20,27 +23,33 @@ body {
     align-items: center;
 }
 
+/* Brand */
 .brand {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
 }
 
+/* Nav links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
-    color: white;
     text-decoration: none;
+    color: white;
     font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .nav-links a:hover {
     text-decoration: underline;
 }
 
+/* Main Page Container */
 .container {
     flex: 1;
     display: flex;
@@ -48,33 +57,113 @@ body {
     justify-content: center;
 }
 
+/* Login Box */
 .login-box {
-    background-color: #2d3748; 
+    background-color: #2d3748;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
     width: 100%;
     max-width: 400px;
     text-align: center;
 }
 
 .login-box h2 {
-    font-size: 1.875rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
 }
 
 #login {
     width: 100%;
-    background-color: #2563eb; 
+    background-color: #2563eb; /* blue-600 */
     color: white;
-    padding: 0.5rem;
-    font-size: 1.125rem;
+    padding: 0.75rem;
+    font-size: 1.2rem;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #login:hover {
-    background-color: #1e40af; 
+    background-color: #1d4ed8; /* blue-700 */
+}
+
+/* Profile Button and Dropdown */
+.profile-container {
+    position: relative;
+}
+
+.profile-button {
+    background-color: #2d3748;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #4a5568;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #4a5568;
+}
+
+.dropdown {
+    position: absolute;
+    top: 2.8rem;
+    right: 0;
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 220px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.dropdown p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.logout-button {
+    background-color: #e53e3e; /* red-600 */
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #c53030; /* red-700 */
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.hidden {
+    display: none;
 }
