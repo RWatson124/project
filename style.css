@@ -611,3 +611,111 @@ hr {
   width: 70px;
   height: auto;
 }
+
+/* Endgame Page Styles */
+
+#endpage-play-audio-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #000;
+  border: 2px solid #000;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.endpage-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.endpage-main-heading {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: 'Luminari', Arial, 'comic-sans', Helvetica, sans-serif;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+}
+
+.endpage-sub-heading {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #c4b9b9
+}
+
+.endpage-results-display {
+  width: 300px;
+  border: 2px solid #c4b9b9;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d6cfcf
+}
+
+.endpage-results-display h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.endpage-results-display ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.endpage-results-display li {
+  margin-bottom: 6px;
+}
+
+.endpage-visuals {
+  margin: 20px 0; 
+}
+
+.endpage-play-again-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.endpage-win {
+  color: green;
+}
+
+.endpage-lose {
+  color: red;
+}
+
+.endpage-results-display {
+  margin: 20px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#endpage-highlights {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  background-color: #e7f3ff
+}
+
+#endpage-highlights ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#endpage-highlights li {
+  margin: 5px 0;
+  font-size: 16px;
+}
