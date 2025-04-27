@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Game Settings</title>
+    <!-- loading the specific stylesheet -->
    <link rel="stylesheet" href="SettingsStyle.css">
 </head>
 <body>
+    <!-- Adding menu icon in the top left for ease of use -->
     <button class="Menu_Icon" aria-label="Open navigation menu">☰</button>
     <div class="Dropdown_Menu" id="dropdownMenu">
         <a href="../gameBoard.html">Game Page</a>
@@ -13,6 +15,7 @@
         <a href="../characterSelection.html">Character Selection Page</a>
         <a href="../login.html">Login Page</a>
     </div>
+    <!-- Putting the settings in a container to make it easier to format and to look nice -->
     <div class="Settings_Container">        
         <div class="Header">          
             <h1>Game Settings</h1>           
@@ -21,6 +24,7 @@
             <div class="Grouped">
                 <label for="difficulty">Difficulty</label>
                 <div class="Radio_Group">
+                    <!-- Difficulty selection -->
                     <input type="radio" id="easy" name="difficulty" value="easy" checked>
                     <label for="easy">Easy</label>
                     <input type="radio" id="medium" name="difficulty" value="medium">
@@ -33,6 +37,7 @@
             <div class="Grouped">
                 <label for="rooms">Number of rooms</label>
                 <div class="Dropdown_Group">
+                    <!-- Room selection -->
                     <select id="rooms" name="rooms">
                         <option value="5">5</option>
                         <option value="6">6</option>
@@ -45,6 +50,7 @@
 
             <div class="Grouped">
                 <label for="hints">Number of hints</label>
+                <!-- Hint selection -->
                 <div class="Dropdown_Group">
                     <select id="hints" name="hints">
                         <option value="0">0</option>
@@ -60,6 +66,7 @@
             <div class="Grouped">
                 <label for="guesses">Number of guesses</label>
                 <div class="Dropdown_Group">
+                    <!-- Number of guesses to choose -->
                     <select id="guesses" name="guesses">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
@@ -73,6 +80,7 @@
             <div class="Grouped">
                 <label for="passages">Secret Passages</label>
                 <div class="Radio_Group">
+                    <!-- If secret passages are allowed or not -->
                     <input type="radio" id="allowed" name="passages" value="allowed" checked>
                     <label for="allowed">Allowed</label>
                     <input type="radio" id="not-allowed" name="passages" value="not-allowed">
@@ -81,6 +89,7 @@
             </div>
         </form>
     </div>
+    <!-- Loading my javascript file -->
     <script src="SettingsScript.js"></script>
 </body>
 </html>

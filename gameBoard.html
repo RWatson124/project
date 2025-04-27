@@ -251,17 +251,19 @@
   
   
 <script>
+
+//Loading the settings from localstorage
 const rooomss = 9;
 const savedSettings = JSON.parse(localStorage.getItem('Game_Settings')) || {
-  difficulty: 'medium', //default settings incase no settings
+  difficulty: 'medium', //Default settings incase no settings
   roooms: 5,
   hints: 3,
   guesses: 10,
   passages: 'on'
 };
-
+//Storage the savedSettings loaded
 const { difficulty, roooms, hints, guesses, passages } = savedSettings;
-
+//Displaying settings in a log so that can check they have loaded successfully
 console.log('Applied game settings:');
 console.log(`- Difficulty: ${difficulty}`);
 console.log(`- Number of rooms: ${rooomss}`);
