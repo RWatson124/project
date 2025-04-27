@@ -1,5 +1,5 @@
                 /*BACKGROUND/LAYOUT*/
-body {
+main {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -55,12 +55,11 @@ img {
     transform: translateY(1px); 
 }
 
- 
-                /*SIGN IN BUTTON*/
-.signin-button {
+               /*ACCOUNT BUTTON*/
+.account-button {
     display: inline-block;
     padding: 15px 30px;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: normal;
     font-style: italic;
     color: rgb(184, 183, 155);
@@ -75,11 +74,11 @@ img {
     z-index: 10;
 }
 
-.signin-button:hover {
+.account-button:hover {
     background-color: #534637; 
 }
 
-.signin-button:active {
+.account-button:active {
     transform: translateY(1px); 
 }
 
@@ -92,6 +91,7 @@ img {
     width: 80%;
     max-width: 600px;
 }
+
 
                 /*LOGO*/
 .logo {
@@ -150,7 +150,7 @@ img {
                 /*SETTINGS BUTTON*/
 .settings {
         position: absolute;
-        top: 10px; 
+        top: 75px; 
         left: 10px; 
         width: 90px; 
         height: 90px; 
