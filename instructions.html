@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cluedo</title>
+    <link rel="stylesheet" href="instructions.css">
+</head>
+
+
+
+<body>
+    <!-- Left slideshow -->
+    <div class="slideshow left">
+     <img src="HI images/slide1_left.jpeg" class="active">
+     <img src="HI images/slide2_left.jpg">
+     <img src="HI images/slide3_left.png">
+ </div>
+ 
+   <!-- Right slideshow -->
+   <div class="slideshow right">
+     <img src="HI images/slide1_right.jpg" class="active">
+     <img src="HI images/slide2_right.jpg">
+     <img src="HI images/slide3_right.jpeg">
+ </div>
+   
+ <script>
+     function startSlideshow(slideshowSelector) {
+         const images = document.querySelectorAll(`${slideshowSelector} img`);
+         let currentIndex = 0;
+ 
+         function changeImage() {
+             images[currentIndex].classList.remove('active');
+             currentIndex = (currentIndex + 1) % images.length;
+             images[currentIndex].classList.add('active');
+         }
+         setInterval(changeImage, 5000); 
+     }
+     startSlideshow('.left');
+     startSlideshow('.right');
+ </script>
+
+
+<div class="text-box">
+    <img src="HI images/lefticon.png" class="left-icon">
+    <img src="HI images/righticon.png" class="right-icon">
+
+    <h1>How to Play</h1>
+
+    <h3>Follow the instructions to play the game!</h3>
+
+    <p>1. First, choose your character on the selection page. You will then be given a random selection of weapons, rooms and characters.</p>
+        <p> 2. To begin playing, click the dice button to roll the dice and use the arrows to move the given number across the board. </p>
+          <p>3. When you land on a room, you can make a guess using the field shown. You will told if any of your guesses were correct.  </p>
+           <p>4. Use the check list at the top left to keep track of your guesses.</p>
+                <p>5. Continue rolling the dice and moving across the board, using the rooms to make more guesses.</p>
+                    <p>6. Make a fully correct guess within 10 minutes to win! </p>
+
+
+
+<button class="faq-button" onclick="showText()">More Info</button>
+
+<div id="bottom-text" style="display: none;"></div>
+
+<script>
+    function showText() {
+    const bottomText = document.getElementById("bottom-text");
+
+   
+    if (bottomText.style.display === "none") {
+        bottomText.style.display = "block"; 
+        bottomText.innerHTML = "- You can make as many guesses as you need. As long as you make the correct one within the timeframe you can win the game. Settings can be adjusted in the 'Settings page' to manage gameplay."; 
+    } else {
+        bottomText.style.display = "none"; 
+        bottomText.innerHTML = "";
+    }
+}
+</script>
+
+    <a href="startGame.html" class="play-button">Continue to Game</a>        <!-- LINK TO GAME PAGE -->
+
+</div>
+
+
+<a href="homepage.html">                                                    
+    <img src="HI images/backarrow.png" alt="Back" class="back-button"> 
+</a>
+
+
+</body>
+
+</html>
