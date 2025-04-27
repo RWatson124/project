@@ -14,7 +14,7 @@ document.addEventListener('click', (event) => {
 const form = document.querySelector('.Settings_Form');
 form.addEventListener('change', () => {
     const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
-    const rooms = document.getElementById('rooms').value;
+    const rooms = document.getElementById('rooms').value || 9;
     const hints = document.getElementById('hints').value;
     const guesses = document.getElementById('guesses').value;
     const passages = document.querySelector('input[name="passages"]:checked').value;
