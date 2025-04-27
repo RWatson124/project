@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
-  
-  <title>Cluedo</title>
-  <link rel="stylesheet" href="style.css">
-  <script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+    <title>Cluedo</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
     // Countdown
 
     // Check if there's already a saved countdown - waits for the code to finish loading before running the countdown
     window.addEventListener("DOMContentLoaded", function () {
       //if there is a previous countdown then load that from local storage
       let countDownDate = localStorage.getItem("cluedoEndTime");
-      //get current time 
+      //get current time
       const now = new Date().getTime();
 
       // If the saved countdown is missing or already expired from previous game
       if (!countDownDate || parseInt(countDownDate) < now) {
         //sets countdown to 10 minutes from now
-        countDownDate = now + 10 * 60 * 1000; 
+        countDownDate = now + 10 * 60 * 1000;
         //the setItem saves the current time so that it continues even when the page reloads
         localStorage.setItem("cluedoEndTime", countDownDate);
         //this converts the string back into an integer if the count down is not expired
@@ -27,21 +28,21 @@
         countDownDate = parseInt(countDownDate);
       }
 
-      //this stores the element "demo" as timer so it can be reused 
+      //this stores the element "demo" as timer so it can be reused
       const timer = document.getElementById("demo");
 
-      //initialising x to store interval ID so it can be called and stopped later 
+      //initialising x to store interval ID so it can be called and stopped later
       const x = setInterval(function () {
         //get current time in milliseconds
         const now = new Date().getTime();
-        //calculates how many miliseconds until the timer is done 
+        //calculates how many miliseconds until the timer is done
         const distance = countDownDate - now;
 
         //if the countdown has ended then stop the setInterval loop
         if (distance < 0) {
           clearInterval(x);
           if (timer) timer.innerHTML = "EXPIRED";
-          //calculate minutes and seconds 
+          //calculate minutes and seconds
         } else {
           const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -51,23 +52,23 @@
       }, 1000);
     });
 
-</script>
+    </script>
 
-  <!-- display record icon and link to record page -->
-  <div class="recordIcon">
-    <a href="Record.html">
-        <img src="recordIcon.png" alt="Record Icon">
-    </a>
-</div>
+    <!-- display record icon and link to record page -->
+    <div class="recordIcon">
+        <a href="Record.html">
+            <img src="recordIcon.png" alt="Record Icon">
+        </a>
+    </div>
 
-<!-- display cards icon and link to card page -->
-  <div class="cardsIcon">
-    <a href="Cards.html">
-      <img src="cards2.png" alt="cards Icon">
-    </a>
-  </div>
-  
-  
+    <!-- display cards icon and link to card page -->
+    <div class="cardsIcon">
+        <a href="Cards.html">
+            <img src="cards2.png" alt="cards Icon">
+        </a>
+    </div>
+
+
 </head>
 
 <body>
@@ -279,6 +280,9 @@ console.log(`- Passages: ${passages}`);
 
     const rooms = ["Ballroom", "Billiard Room", "Conservatory", "Dining Room", "Hall", "Kitchen", "Lounge", "Library", "Study"];
 
+    let wins = parseInt(localStorage.getItem("wins") || "0", 10);
+    let wrongAccusations = parseInt(localStorage.getItem("wrong_accusations") || "0", 10);
+
     //initalises the correct answer variables
     let secretSuspect = "";
     let secretWeapon = "";
@@ -489,21 +493,23 @@ console.log(`- Passages: ${passages}`);
 
 //function to let player make final accusation 
 function checkAccusation() {
-  //get option selected from drop down
   const char = document.getElementById("accuseCharacter").value;
   const weapon = document.getElementById("accuseWeapon").value;
   const room = document.getElementById("accuseRoom").value;
 
-  //if all three guess are correct then alert the player that they have solved it
   if (char === secretSuspect && weapon === secretWeapon && room === secretRoom) {
     alert("Correct! You solved the mystery!");
-    window.location.href = "startGame.html"; 
-    //otherwise return to the board
+    wins += 1;
+    localStorage.setItem("wins", wins);
+    window.location.href = "startgame.html"; 
   } else {
     alert("Wrong!");
+    wrongAccusations += 1;
+    localStorage.setItem("wrong_accusations", wrongAccusations);
     document.getElementById("accusationPopup").style.display = "none";
   }
 }
+
 
 function closeAccusation() {
   document.getElementById("accusationPopup").style.display = "none";
