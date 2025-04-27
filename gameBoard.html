@@ -305,6 +305,10 @@ console.log(`- Passages: ${passages}`);
 
       console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
 
+      localStorage.setItem("cluedoSuspect", secretSuspect);
+      localStorage.setItem("cluedoWeapon", secretWeapon);
+      localStorage.setItem("cluedoRoom", secretRoom);
+
       // Remove the solution cards from the remaining options
       remainingSuspects = suspects.filter(s => s !== secretSuspect);
       remainingWeapons = weapons.filter(w => w !== secretWeapon);
@@ -501,7 +505,7 @@ function checkAccusation() {
     alert("Correct! You solved the mystery!");
     wins += 1;
     localStorage.setItem("wins", wins);
-    window.location.href = "startgame.html"; 
+    window.location.href = "endgamepage.html"; 
   } else {
     alert("Wrong!");
     wrongAccusations += 1;

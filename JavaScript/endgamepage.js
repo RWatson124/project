@@ -36,6 +36,8 @@ function endGame() {
   const weapon = localStorage.getItem("cluedoWeapon");
   const room = localStorage.getItem("cluedoRoom");
 
+  console.log("Retreived from localStorage:", {suspect, weapon, room, resultElement}); 
+
   // get game result from local storage
   const result = localStorage.getItem("gameResult");
 
@@ -57,7 +59,7 @@ function endGame() {
   const highlightsList = document.querySelector('#endpage-highlights ul');
   if (highlightsList) {
   highlightsList.innerHTML = `   
-      <li><strong>Correct Guess: </strong> ${suspect} with the ${weapon} in the ${room}</li>
+      <li><strong>Secret Solution: </strong> ${suspect} with the ${weapon} in the ${room}</li>
     `;
  } else {
     console.error("Highlights list not found!");
@@ -65,6 +67,6 @@ function endGame() {
 }
 
 
-endGame();
+document.addEventListener("DOMContentLoaded", endGame);
 
 
