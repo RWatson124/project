@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <title>Cluedo</title>
+    <link rel="stylesheet" href="style.css">
+    <script></script>
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+
+    <link rel="stylesheet" href="CSS/login.css">
+    <script src="JavaScript/navbar.js"></script>
+</head>
+<body>
+
+<script>
+    loadNavbar();
+</script>
+
+<audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+<div class="start-button-container">
+    <button class="start-button" onclick="startGame()">Start Game</button>
+</div>  
+
+<p id="demo"></p>
+<hr>
+
+
+<script>
+    function startGame() {
+    const allCards = [];
+    for (let i = 1; i <= 21; i++) {
+      allCards.push(`card${i}.png`);
+    }
+
+    const shuffled = allCards.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 6);
+
+    localStorage.setItem("selectedCards", JSON.stringify(selected));
+    window.location.href = "characterSelection.html";
+  }
+</script>
+
+
+<div class="settingbutton-container">
+  <a href="Settings Page/SettingsIndex.html" class="settingsbutton">Settings</a>
+</div> 
+
+
+
+</body>
+</html>

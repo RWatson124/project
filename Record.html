@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <title>Cluedo</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+
+
+  </script>
+  <div class="homeIcon">
+    <a href="gameBoard.html">
+    <img src="homeIcon.png" alt="Home Icon">
+    </a>
+  </div>
+
+  <div class="cardsIcon">
+    <a href="Cards.html">
+    <img src="cards2.png" alt="cards Icon">
+    </a>
+  </div>
+  
+</head>
+
+<body>
+  
+<audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+
+<p id="demo"></p>
+<div class="record-table">
+    <h2>Cluedo Record</h2>
+    <table>
+      <tr><th colspan="2">Suspects</th></tr>
+      <tr><td>● Mrs White</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Reverend Green</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Mrs Peacock</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Professor Plum</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Miss Scarlett</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Colonel Mustard</td><td class="toggle-cell"></td></tr>
+  
+      <tr><th colspan="2">Weapons</th></tr>
+      <tr><td>● Candlestick</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Dagger</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Lead Pipe</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Revolver</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Rope</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Spanner</td><td class="toggle-cell"></td></tr>
+  
+      <tr><th colspan="2">Rooms</th></tr>
+      <tr><td>● Ballroom</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Billiard Room</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Conservatory</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Dining Room</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Hall</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Kitchen</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Lounge</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Library</td><td class="toggle-cell"></td></tr>
+      <tr><td>● Study</td><td class="toggle-cell"></td></tr>
+    </table>
+  </div>
+  
+
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get all elements with the class "toggle-cell"
+      const cells = document.querySelectorAll(".toggle-cell");
+
+      // Loop through each cell
+      cells.forEach(function (cell) {
+        // When the cell is clicked
+        cell.addEventListener("click", function () {
+          // Toggle the content between "X" and blank
+          if (cell.textContent === "X") {
+            cell.textContent = "";
+          } else {
+            cell.textContent = "X";
+          }
+        });
+      });
+    });
+
+
+  </script>
+  
+
+
+
+
+
+
+</body>
+</html>

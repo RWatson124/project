@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <title>Cluedo</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+
+
+  </script>
+
+</head>
+
+<body>
+
+<audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+
+
+<p id="demo"></p>
+<hr>
+
+<h2 class="characterAndCards-heading">Your Cards</h2>
+<div id="cardContainer" class="card-container"></div>
+
+<div class="continue-button-container">
+    <a href="gameBoard.html" class="start-button">Continue</a>
+</div>  
+
+<script>
+    window.onload = function () {
+  const container = document.getElementById("cardContainer");
+
+  // Generate an array of card filenames
+  const allCards = [];
+  for (let i = 1; i <= 21; i++) {
+    allCards.push(`card${i}.png`);
+  }
+
+  // Shuffle cards
+  const shuffled = allCards.sort(() => 0.5 - Math.random());
+
+  // Pick 6 cards
+  const selected = shuffled.slice(0, 6);
+
+  // Save to localStorage if needed
+  localStorage.setItem("selectedCards", JSON.stringify(selected));
+
+  // Display selected cards
+  selected.forEach(card => {
+    const img = document.createElement("img");
+    img.src = `cards/${card}`;
+    img.alt = card;
+    img.className = "card-img";
+    container.appendChild(img);
+  });
+};
+
+
+
+
+
+
+</script>
+
+
+<div class="settingbutton-container">
+  <a href="Settings Page/SettingsIndex.html" class="settingsbutton">Settings</a>
+</div> 
+
+
+
+
+</body>
+</html>

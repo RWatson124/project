@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <div class="settingbutton-container">
+    <a href="Settings Page/SettingsIndex.html" class="settingsbutton">Settings</a>
+  </div> 
+  
+  <title>Cluedo</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Countdown
+
+    // Check if there's already a saved countdown - waits for the code to finish loading before running the countdown
+    window.addEventListener("DOMContentLoaded", function () {
+      //if there is a previous countdown then load that from local storage
+      let countDownDate = localStorage.getItem("cluedoEndTime");
+      //get current time 
+      const now = new Date().getTime();
+
+      // If the saved countdown is missing or already expired from previous game
+      if (!countDownDate || parseInt(countDownDate) < now) {
+        //sets countdown to 10 minutes from now
+        countDownDate = now + 10 * 60 * 1000; 
+        //the setItem saves the current time so that it continues even when the page reloads
+        localStorage.setItem("cluedoEndTime", countDownDate);
+        //this converts the string back into an integer if the count down is not expired
+      } else {
+        countDownDate = parseInt(countDownDate);
+      }
+
+      //this stores the element "demo" as timer so it can be reused 
+      const timer = document.getElementById("demo");
+
+      //initialising x to store interval ID so it can be called and stopped later 
+      const x = setInterval(function () {
+        //get current time in milliseconds
+        const now = new Date().getTime();
+        //calculates how many miliseconds until the timer is done 
+        const distance = countDownDate - now;
+
+        //if the countdown has ended then stop the setInterval loop
+        if (distance < 0) {
+          clearInterval(x);
+          if (timer) timer.innerHTML = "EXPIRED";
+          //calculate minutes and seconds 
+        } else {
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          if (timer) timer.innerHTML = `${minutes}m ${seconds}s`;
+        }
+        //runs interval every 1000 milliseconds (1 second)
+      }, 1000);
+    });
+
+</script>
+
+  <!-- display record icon and link to record page -->
+  <div class="recordIcon">
+    <a href="Record.html">
+        <img src="recordIcon.png" alt="Record Icon">
+    </a>
+</div>
+
+<!-- display cards icon and link to card page -->
+  <div class="cardsIcon">
+    <a href="Cards.html">
+      <img src="cards2.png" alt="cards Icon">
+    </a>
+  </div>
+  
+  
+</head>
+
+<body>
+
+<audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+
+<!-- display thumb print icon -->  
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+<!-- display default image of scarlet which will be replaced when the player choses a character --> 
+<div class="scarlettImage">
+    <img id="characterImage" src="scarlet.png" alt="Character image">
+  </div>
+  
+
+<p id="demo"></p>
+<!-- insert Line -->  
+<hr>
+
+<!-- creation of the board --> 
+<div class="board" id="board">
+  <!-- Grid squares will be injected here using JS found below -->
+  
+  <!-- Room Images -->
+  <div class="ballroomImage"><img src="ballroom1.png" alt="ballroom image"></div>
+  <div class="loungeImage"><img src="lounge1.png" alt="lounge image"></div>
+  <div class="hallImage"><img src="hall1.png" alt="hall image"></div>
+  <div class="billiardImage"><img src="billiardRoom1.png" alt="billiard image"></div>
+  <div class="conservatoryImage"><img src="conservatory1.png" alt="conservatory image"></div>
+  <div class="libraryImage"><img src="library1.png" alt="library image"></div>
+  <div class="kitchenImage"><img src="kitchen1.png" alt="kitchen image"></div>
+  <div class="studyImage"><img src="study1.png" alt="study image"></div>
+  <div class="diningImage"><img src="diningroom.png" alt="dining room image"></div>
+  <div class="startingSectionImage"><img src="startingSection.jpg" alt="starting section image"></div>
+  <div class="playerToken" id="playerToken"></div>
+  <!-- red squares used to enter room -->
+  <div class="Red-square1"></div>
+  <div class="Red-square2"></div>
+  <div class="Red-square3"></div>
+  <div class="Red-square4"></div>
+  <div class="Red-square5"></div>
+  <div class="Red-square6"></div>
+  <div class="Red-square7"></div>
+  <div class="Red-square8"></div>
+  <div class="Red-square9"></div>
+  <div class="Red-square10"></div>
+  <div class="Red-square11"></div>
+
+</div>
+
+<!-- Dice and Roll Button -->
+<div class="diceSection">
+  <div class="diceWrapper">
+    <div class="container">
+      <div class="dice">
+        <!-- Starting image for dice -->
+        <img class="img1" src="dice6.png">
+      </div>
+    </div>
+
+    <div class="container bottom">
+      <!-- button that rolls dice and connects to the JS rollTheDice() -->
+      <button type="button" class="butn" onClick="rollTheDice()">Roll the Dice</button>
+      <!-- Arrow controls -->
+      <div class="arrow-controls">
+        <button onclick="move('up')">
+          <img src="upArrow.png" alt="Up" />
+        </button>
+        <div>
+          <button onclick="move('left')">
+            <img src="leftArrow.png" alt="Left" />
+          </button>
+          <button onclick="move('right')">
+            <img src="rightArrow.png" alt="Right" />
+          </button>
+        </div>
+        <button onclick="move('down')">
+          <img src="downArrow.png" alt="Down" />
+        </button>
+      </div>
+    </div>
+    
+
+
+<!--room popup - when a player reaches a room they have the option of two: to enter and make a guess or go back to the board  -->
+<div id="roomPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <p>You've reached a room. Do you want to enter or continue?</p>
+    <button onclick="enterRoom()">Enter Room</button>
+    <button onclick="continueMoving()">Continue</button>
+  </div>
+</div>
+
+<!-- guess popup - when the player whats to make a guess they display the options-->
+<div id="guessPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <p>Make your guess:</p>
+
+      <!-- character options-->
+      <label for="guessCharacter">Character:</label>
+      <select id="guessCharacter">
+        <option>Mrs White</option>
+        <option>Reverend Green</option>
+        <option>Mrs Peacock</option>
+        <option>Professor Plum</option>
+        <option>Miss Scarlett</option>
+        <option>Colonel Mustard</option>
+      </select><br><br>
+
+      <!-- weapon options-->
+      <label for="guessWeapon">Weapon:</label>
+      <select id="guessWeapon">
+        <option>Candlestick</option>
+        <option>Dagger</option>
+        <option>Lead Pipe</option>
+        <option>Revolver</option>
+        <option>Rope</option>
+        <option>Spanner</option>
+      </select><br><br>
+
+      <!-- button to submit guess-->
+      <button onclick="submitGuess()">Guess</button>
+      <!-- button to return to board-->
+      <button onclick="closeGuessPopup()">Return to Game Board</button>
+    </div>
+  </div>
+
+  <!-- Accusation popup - similar to guess popup but includes room option and only appears when the player reaches the red square at the centre of board-->
+  <div id="accusationPopup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <p>You are in the Starting Section. Make your final accusation:</p>
+
+      <!-- character options-->
+      <label for="accuseCharacter">Character:</label>
+      <select id="accuseCharacter">
+        <option>Mrs White</option>
+        <option>Reverend Green</option>
+        <option>Mrs Peacock</option>
+        <option>Professor Plum</option>
+        <option>Miss Scarlett</option>
+        <option>Colonel Mustard</option>
+      </select><br><br>
+
+      <!-- weapons options-->
+      <label for="accuseWeapon">Weapon:</label>
+      <select id="accuseWeapon">
+        <option>Candlestick</option>
+        <option>Dagger</option>
+        <option>Lead Pipe</option>
+        <option>Revolver</option>
+        <option>Rope</option>
+        <option>Spanner</option>
+      </select><br><br>
+
+      <!-- room options-->
+      <label for="accuseRoom">Room:</label>
+      <select id="accuseRoom">
+        <option>Ballroom</option>
+        <option>Billiard Room</option>
+        <option>Conservatory</option>
+        <option>Dining Room</option>
+        <option>Hall</option>
+        <option>Kitchen</option>
+        <option>Lounge</option>
+        <option>Library</option>
+        <option>Study</option>
+      </select><br><br>
+
+      <!-- button to comfirm accusation-->
+      <button onclick="checkAccusation()">Make Accusation</button>
+      <!-- button to return to board -->
+      <button onclick="closeAccusation()">Return to Game Board</button>
+    </div>
+  </div>
+  
+  
+<script>
+
+  //initialise variables for the room the player is currently in and the one they were in last
+    let currentRoom = "";
+    let lastRoomEntered = "";
+
+    //initalise arrays for character, weapons and rooms
+    const suspects = ["Mrs White", "Reverend Green", "Mrs Peacock", "Professor Plum", "Miss Scarlett", "Colonel Mustard"];
+
+    const weapons = ["Candlestick", "Dagger", "Lead Pipe", "Revolver", "Rope", "Spanner"];
+
+    const rooms = ["Ballroom", "Billiard Room", "Conservatory", "Dining Room", "Hall", "Kitchen", "Lounge", "Library", "Study"];
+
+    let wins = parseInt(localStorage.getItem("wins") || "0", 10);
+    let wrongAccusations = parseInt(localStorage.getItem("wrong_accusations") || "0", 10);
+
+    //initalises the correct answer variables
+    let secretSuspect = "";
+    let secretWeapon = "";
+    let secretRoom = "";
+
+    //initialises arrays which will keep track of remaining suspects, weapons and rooms
+    let remainingSuspects = [...suspects];
+    let remainingWeapons = [...weapons];
+    let remainingRooms = [...rooms];
+
+    //function to select the murderer, weapon and room
+    function pickSecretCards() {
+      //select randomly for each one
+      //Math.random() gives a random number between 0 and 1
+      //this number is then multiplied by the number of suspects
+      //Math.floor makes the number a whole number which corresponds to a position in the arrays 
+      secretSuspect = suspects[Math.floor(Math.random() * suspects.length)];
+      secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+      secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
+
+      console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
+
+      // Remove the solution cards from the remaining options
+      remainingSuspects = suspects.filter(s => s !== secretSuspect);
+      remainingWeapons = weapons.filter(w => w !== secretWeapon);
+      remainingRooms = rooms.filter(r => r !== secretRoom);
+    }
+
+
+    //saves the selected character to local storage
+    const selectedCharacter = localStorage.getItem("selectedCharacter");
+    //if there was no character selected, use default to image
+    if (selectedCharacter) {
+      document.getElementById("characterImage").src = selectedCharacter;
+    }
+
+  window.onload = function () {
+    //when the page loads pick random cards
+    pickSecretCards();
+
+    // Save remaining cards to local storage so they can be used in Cards.html
+    localStorage.setItem("remainingSuspects", JSON.stringify(remainingSuspects));
+    localStorage.setItem("remainingWeapons", JSON.stringify(remainingWeapons));
+    localStorage.setItem("remainingRooms", JSON.stringify(remainingRooms));
+    const board = document.getElementById("board");
+
+    // Inject 500 grid spaces into the board
+    for (let i = 0; i < 500; i++) {
+      const square = document.createElement("div");
+      square.className = "space";
+      board.appendChild(square);
+    }
+
+    // Set starting position of the token
+    let x = 320;
+    let y = 400;
+    const token = document.getElementById("playerToken");
+    token.style.left = `${x}px`;
+    token.style.top = `${y}px`;
+
+    let movesLeft = 0;
+
+    // Room coordinates to trigger popup
+    const triggerPoints = [
+      { x: 0, y: 200, name: "Ballroom" },
+      { x: 360, y: 200, name: "Hall" },
+      { x: 600, y: 200, name: "Lounge" },
+      { x: 600, y: 280, name: "Dining Room (Side Door)" },
+      { x: 560, y: 400, name: "Dining Room (Front Door)" },
+      { x: 600, y: 600, name: "Study" },
+      { x: 560, y: 880, name: "Kitchen" },
+      { x: 440, y: 800, name: "Billard Room" },
+      { x: 160, y: 960, name: "Conservatory" },
+      { x: 200, y: 480, name: "Library" },
+      { x: 320, y: 360, name: "Starting Section" }
+    ];
+
+    // Roll the dice 
+    window.rollTheDice = function () {
+      //pick random number
+      const randomNumber = Math.floor(Math.random() * 6) + 1;
+      //show corrosponding dice image
+      document.querySelector(".img1").setAttribute("src", "dice" + randomNumber + ".png");
+
+      movesLeft = randomNumber;
+      alert(`You rolled a ${randomNumber}! Use the arrows to move.`);
+    };
+
+    // Movement logic using top/left
+    window.move = function (direction) {
+      if (movesLeft <= 0) {
+        alert("Roll the dice first!");
+        return;
+      }
+
+      // Set the movement step
+        const step = 40;
+
+      // Board size limits (adjust if needed)
+      const minX = 0;
+      const maxX = 600; // Example: 15 spaces * 40px
+      const minY = 0;
+      const maxY = 960; // Example: 24 spaces * 40px
+
+      // Try to move based on direction, but don't allow out of bounds
+      if (direction === 'up' && y - step >= minY) y -= step;
+      if (direction === 'down' && y + step <= maxY) y += step;
+      if (direction === 'left' && x - step >= minX) x -= step;
+      if (direction === 'right' && x + step <= maxX) x += step;
+
+      // Update token position
+      token.style.left = `${x}px`;
+      token.style.top = `${y}px`;
+
+      movesLeft--;
+      //determine whether the player has landed on a red square
+      checkTriggerPoint(x, y);
+
+      if (movesLeft === 0) {
+        alert("No more moves left! Roll again.");
+      }
+    };
+
+    // Check if token reached a red square (trigger point)
+    function checkTriggerPoint(x, y) {
+      //determine whether the coordinates match any of the squares
+      const match = triggerPoints.find(point => point.x === x && point.y === y);
+
+      //if it is a match determine if the room is the starting section or a normal room 
+      if (match) {
+          lastRoomEntered = match.name;
+          if (match.name === "Starting Section") {
+              document.querySelector("#roomPopup").style.display = "none";
+              document.querySelector("#accusationPopup").style.display = "block";
+          } else {
+              document.querySelector("#roomPopup p").textContent =
+              `You've reached the ${match.name}. Do you want to enter or continue?`;
+              document.getElementById("roomPopup").style.display = "block";
+          }
+        }
+      }
+
+    //Function to make the room popup page appear
+    window.showRoomChoice = function () {
+      document.getElementById("roomPopup").style.display = "block";
+    };
+
+    window.enterRoom = function () {
+        document.getElementById("roomPopup").style.display = "none";
+        document.getElementById("guessPopup").style.display = "block";
+        
+        // Update room name
+        currentRoom = lastRoomEntered || "a room";
+        document.getElementById("currentRoomText").textContent = `You are in the ${currentRoom}.`;
+        movesLeft = 0;
+    };
+
+    //when the player clicks to enter a room, the roomPopup disappears
+    window.continueMoving = function () {
+      document.getElementById("roomPopup").style.display = "none";
+    };
+  };
+
+  //this function hides the roomPopup and shows the guessPopup
+  window.enterRoom = function () {
+    document.getElementById("roomPopup").style.display = "none";
+    document.getElementById("guessPopup").style.display = "block";
+    movesLeft = 0;
+  };
+
+  //this function hides the guessPopup
+  window.closeGuessPopup = function () {
+    document.getElementById("guessPopup").style.display = "none";
+  };
+
+  window.submitGuess = function () {
+    //gets the character and the weapon guessed by the player
+    const character = document.getElementById("guessCharacter").value;
+    const weapon = document.getElementById("guessWeapon").value;
+
+    // Check guess against remaining suspects
+    if (remainingSuspects.includes(character)) {
+      alert(`The card shown to you is: ${character}`);
+      //remove character from remaining list
+      remainingSuspects = remainingSuspects.filter(s => s !== character);
+    }
+
+    // Check guess against remaining weapons
+    else if (remainingWeapons.includes(weapon)) {
+      alert(`The card shown to you is: ${weapon}`);
+      //remove weapon from remaining list
+      remainingWeapons = remainingWeapons.filter(w => w !== weapon);
+    }
+
+    // Check if current room name contains any of the room names in the list
+    else {
+      const matchedRoom = remainingRooms.find(room => currentRoom.includes(room));
+      if (matchedRoom) {
+        alert(`The card shown to you is: ${matchedRoom}`);
+        remainingRooms = remainingRooms.filter(r => r !== matchedRoom);
+      } else {
+        alert("None of your guesses are in the list.");
+      }
+    }
+
+    document.getElementById("guessPopup").style.display = "none";
+  };
+
+//function to let player make final accusation 
+function checkAccusation() {
+  const char = document.getElementById("accuseCharacter").value;
+  const weapon = document.getElementById("accuseWeapon").value;
+  const room = document.getElementById("accuseRoom").value;
+
+  if (char === secretSuspect && weapon === secretWeapon && room === secretRoom) {
+    alert("Correct! You solved the mystery!");
+    wins += 1;
+    localStorage.setItem("wins", wins);
+    window.location.href = "startgame.html"; 
+  } else {
+    alert("Wrong!");
+    wrongAccusations += 1;
+    localStorage.setItem("wrong_accusations", wrongAccusations);
+    document.getElementById("accusationPopup").style.display = "none";
+  }
+}
+
+function closeAccusation() {
+  document.getElementById("accusationPopup").style.display = "none";
+}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+/* Login Page Styling / NavBar */
+body {
+    background-color: #1a202c; /* gray-900 */ /* I will be refrencing colour codes like this since there is multiple and i like using css colour pickers*/ 
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2d3748; /* gray-800 */
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Brand */
+.brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Nav links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* Nav Bar text*/
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Hover effect for nav links */
+.nav-links a:hover { 
+    text-decoration: underline;
+}
+
+/* Main Page Container */
+.container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Login Box */
+.login-box {
+    background-color: #2d3748;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-box h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+#login {
+    width: 100%;
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Login button color change on hover*/
+#login:hover {
+    background-color: #1d4ed8; /* blue-700 */
+}
+
+/* Profile Button / Dropdown */
+.profile-container {
+    position: relative;
+}
+
+/* Profile button color and padding for nav bar*/
+.profile-button {
+    background-color: #2d3748;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #4a5568;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* profile button color change on hover*/
+.profile-button:hover {
+    background-color: #4a5568;
+}
+
+/* Postion and setup of dropdown box / profile button*/
+.dropdown {
+    position: absolute;
+    top: 2.8rem;
+    right: 0;
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 220px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* dropdown text padding and alignment*/
+.dropdown p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* logout button color and size, padding etc*/
+.logout-button {
+    background-color: #e53e3e; /* red-600 */
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Logout button color change on hover*/
+.logout-button:hover {
+    background-color: #c53030; /* red-700 */
+}
+
+/* Utility classes such as to hide objects, make text bold and alignment etc */
+.text-center {
+    text-align: center;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.hidden {
+    display: none;
+}

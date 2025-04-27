@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+
+  <title>Cluedo</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+
+
+  </script>
+  
+</head>
+
+<body>
+
+<audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+
+<div class="header">
+  <img src="thumb.jpg" alt="Cluedo thumbnail">
+  <h1>Cluedo</h1>
+</div>  
+
+<h2 class="characterAndCards-heading">Select a Character</h2>
+
+<div class="character-gallery">
+    <img src="scarlet.png" alt="Character 1" onclick="selectCharacter('scarlet.png')">
+    <img src="peacock.png" alt="Character 2" onclick="selectCharacter('peacock.png')">
+    <img src="plum.png" alt="Character 3" onclick="selectCharacter('plum.png')">
+    <img src="mustard.png" alt="Character 4" onclick="selectCharacter('mustard.png')">
+    <img src="green.png" alt="Character 5" onclick="selectCharacter('green.png')">
+    <img src="white.png" alt="Character 6" onclick="selectCharacter('white.png')">
+  </div>
+  
+  <script>
+    function selectCharacter(imageSrc) {
+      localStorage.setItem("selectedCharacter", imageSrc);
+      window.location.href = "Cards.html"; // Navigate to the game page
+    }
+    //test comment
+  </script>
+  
+
+<p id="demo"></p>
+<hr>
+
+
+<script>
+
+</script>
+
+
+<div class="settingbutton-container">
+  <a href="Settings Page/SettingsIndex.html" class="settingsbutton">Settings</a>
+</div> 
+
+
+
+
+</body>
+</html>
