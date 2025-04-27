@@ -6,8 +6,9 @@ async function loadNavbar() {
             <div class="nav-content">
                 <span class="brand">Murder Mystery</span>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="startgame.html">Start Game</a></li>
+                    <li><a href="settings.html">Settings</a></li>
                 </ul>
                 <div class="profile-container">
                     <button id="profile-button" class="profile-button">Login</button>
