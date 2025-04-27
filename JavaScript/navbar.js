@@ -8,7 +8,7 @@ async function loadNavbar() {
                 <ul class="nav-links" id="nav-links">
                     <li><a href="homepage.html">Home</a></li>
                     <li><a href="startgame.html">Start Game</a></li>
-                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="Settings Page/SettingsIndex.html">Settings</a></li>
                 </ul>
                 <div class="profile-container">
                     <button id="profile-button" class="profile-button">Login</button>
