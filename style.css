@@ -501,6 +501,26 @@ hr {
   background-color: #333;
 }
 
+.settingbutton-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settingsbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d83737;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.settingsbutton:hover {
+    background-color: #460909;
+}
+
 .character-gallery {
   display: flex;
   justify-content: space-evenly;
