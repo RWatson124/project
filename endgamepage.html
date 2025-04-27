@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Endgame Screen </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="endpage-container">
+        <h1 class="endpage-main-heading"> GAME OVER ! </h1>
+
+        <h2 id="game-result" class="endpage-sub-heading">Loading Outcome... </h2>
+
+        <div class="endpage-results-display">
+            <h2> Game Highlights </h2>
+            <div id="endpage-highlights">
+                <ul>
+                    <!-- the list will contain the values within the javascript function endgame()-->
+                </ul>
+            </div>                                                                                                                                                                                                                                                                                                                                                                                          
+        </div>
+
+        <div class="endpage-visuals">
+            <audio id="end-soundtrack" controls>
+                <source src="soundtrack.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <button id="endpage-play-audio-btn" style="display: none;">Play Music</button>
+
+        </div>
+        
+        <button id="restart-button" class="endpage-play-again-btn"> Play Again? </button>
+    </div>
+
+    <script src="endgamepage.js"></script>
+
+</body>
+</html>
