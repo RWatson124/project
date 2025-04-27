@@ -26,6 +26,10 @@ window.addEventListener('load', () => {
 }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  endgame();
+});
+
 function endGame() {
   const resultElement = document.getElementById("game-result");
   const suspect = localStorage.getItem("cluedoSuspect");
@@ -33,29 +37,33 @@ function endGame() {
   const room = localStorage.getItem("cluedoRoom");
 
   // get game result from local storage
-  const result = localStorage.getItem("cluedoGameResult");
+  const result = localStorage.getItem("gameResult");
 
   // update header based on win/lose
   if (result === "win") {
-    resultElement.textContent = "You won!"
-    resultElement.classList.add("win");
+    resultElement.textContent = "You won!";
+    resultElement.classList.add("endpage-win");
   } 
   else if (result === "lose") {
     resultElement.textContent = "You lost!";
-    resultElement.classList.add("lose");
+    resultElement.classList.add("endpage-lose");
   }
   else {
     resultElement.textContent = "Game Result Undecided";
   }
-}
+
 
 // update game highlights section with correct guess
-const highlightsList = document.querySelector('.endpage-results-display ul');
-highlightsList.innerHTML = `
-    <li><strong>Winner: </strong> ${suspect}</li>
-    <li><strong>Turns Taken: </strong> [Insert Turns Taken Here]</li>
-    <li><strong>Correct Guess: </strong> ${suspect} with the ${weapon} in the ${room}</li>
-  `;
+  const highlightsList = document.querySelector('#endpage-highlights ul');
+  if (highlightsList) {
+  highlightsList.innerHTML = `   
+      <li><strong>Correct Guess: </strong> ${suspect} with the ${weapon} in the ${room}</li>
+    `;
+ } else {
+    console.error("Highlights list not found!");
+}
+}
+
 
 endGame();
 

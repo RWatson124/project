@@ -43,6 +43,30 @@
     if (distance < 0) {
       clearInterval(x);
       if (timer) timer.innerHTML = "EXPIRED";
+
+      localStorage.setItem("cluedoTimerExpired", "true");  // Handle game end when timer expires
+
+      const accusationPopup = document.getElementById("accusationPopup");
+      if (!accusationPopup) {
+        console.error("Accusation popup not found!");
+        alert("Error: Cannot find accusation popup. Game over!")
+        redirectToEndgame("lose"); // Redirect to endgame page with a loss
+        return;
+      }
+
+      // prompt user for a final accusation
+      const finalAccusation = confirm("Time's up! Make your final accusation.");
+
+      if (finalGuess) {
+        // Show the accusation popup for the final guess
+        accusationPopup.style.display = "block";
+        accusationPopup.dataset.final = "true"; 
+      } else {
+        // Redirect to endgame page with a loss
+        redirectToEndgame("lose");
+      }
+
+
     } else {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -255,6 +279,11 @@ function pickSecretCards() {
   secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
   secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
 
+  // store secret values in localStorage
+  localStorage.setItem("cluedoSuspect", secretSuspect);
+  localStorage.setItem("cluedoWeapon", secretWeapon);
+  localStorage.setItem("cluedoRoom", secretRoom);
+
   console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
 
   // Remove the solution cards from the remaining options
@@ -420,15 +449,43 @@ window.submitGuess = function () {
   document.getElementById("guessPopup").style.display = "none";
 };
 
+function checkAccusation() {
+const char = document.getElementById("accuseCharacter").value;
+const weapon = document.getElementById("accuseWeapon").value;
+const room = document.getElementById("accuseRoom").value;
+
+
+// Force a win for testing purposes
+
+// if (char === "Colonel Mustard" && weapon === "Candlestick" && room === "Library") {
+//   alert("Correct! You solved the mystery!");
+//   redirectToEndgame("win"); // Redirect to endgame page with a win
+// } 
+
+// // Force a loss for testing purposes
+// else if (char === "Reverend Green" && weapon === "Rope" && room === "Ballroom") {
+//   alert("Incorrect! Game over!");
+//   redirectToEndgame("lose"); // Redirect to endgame page with a loss
+// } 
+
+// else {
+
+//   alert("Wrong!");
+
+//   document.getElementById("accusationPopup").style.display = "none";
+
+// }
+
+}
 
 function checkAccusation() {
   const char = document.getElementById("accuseCharacter").value;
   const weapon = document.getElementById("accuseWeapon").value;
   const room = document.getElementById("accuseRoom").value;
-
+ 
   if (char === secretSuspect && weapon === secretWeapon && room === secretRoom) {
     alert("Correct! You solved the mystery!");
-    window.location.href = "startGame.html"; 
+    window.location.href = "endgamepage.html";   // redirect to endgame page
   } else {
     alert("Wrong!");
     document.getElementById("accusationPopup").style.display = "none";
@@ -439,9 +496,10 @@ function closeAccusation() {
   document.getElementById("accusationPopup").style.display = "none";
 }
 
-
-
-
+function redirectToEndgame(result) {
+  localStorage.setItem("gameResult", result); // Store the result in localStorage
+  window.location.href = "endgamepage.html";
+}
 
 </script>
 

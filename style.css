@@ -604,7 +604,7 @@ hr {
   font-size: 4rem;
   margin-bottom: 10px;
   font-weight: bold;
-  font-family:'Comic Sans MS', sans-serif;
+  font-family: 'Luminari', Arial, 'comic-sans', Helvetica, sans-serif;
   color: #ffffff;
   text-align: center;
   width: 100%;
@@ -658,3 +658,30 @@ hr {
 .endpage-lose {
   color: red;
 }
+
+.endpage-results-display {
+  margin: 20px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#endpage-highlights {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  background-color: #e7f3ff
+}
+
+#endpage-highlights ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#endpage-highlights li {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
