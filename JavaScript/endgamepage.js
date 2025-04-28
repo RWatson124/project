@@ -10,7 +10,7 @@ if (playAgainBtn) {
 // play soundtrack on page load
 window.addEventListener('load', () => {
     const audio = document.getElementById('end-soundtrack');
-    const PlayAudioBtn = document.getElementById('play-audio-button');
+    const PlayAudioBtn = document.getElementById('endpage-play-audio-button');
 
     if (audio) {
         audio.play().catch(() => {
@@ -19,10 +19,10 @@ window.addEventListener('load', () => {
         });    
     
     // manual play button
-    playAudioBtn.addEventListener("click", () => {
-        audio.play();
-        playAudioBtn.style.display = "none"; // Hide button after playing
-    });
+    const playAudioBtn = document.getElementById('endpage-play-audio-button');
+    if (playAudioBtn) {
+      playAudioBtn.addEventListener('click', toggleAudio);
+    }
 }
 });
 
