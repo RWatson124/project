@@ -70,25 +70,33 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Get all elements with the class "toggle-cell"
       const cells = document.querySelectorAll(".toggle-cell");
-
-      // Loop through each cell
-      cells.forEach(function (cell) {
-        // When the cell is clicked
+  
+      // Load previous saved state
+      const savedState = JSON.parse(localStorage.getItem("recordState")) || [];
+  
+      cells.forEach(function (cell, index) {
+        // Restore saved X's
+        if (savedState[index] === "X") {
+          cell.textContent = "X";
+        }
+  
+        // Add click event
         cell.addEventListener("click", function () {
-          
           if (cell.textContent === "X") {
             cell.textContent = "";
           } else {
             cell.textContent = "X";
           }
+  
+          // Save new state after every click
+          const newState = Array.from(cells).map(c => c.textContent);
+          localStorage.setItem("recordState", JSON.stringify(newState));
         });
       });
     });
-
-
   </script>
+  
   
 
 

@@ -40,10 +40,12 @@
 
         //if the countdown has ended then stop the setInterval loop
         if (distance < 0) {
-          clearInterval(x);
-          if (timer) timer.innerHTML = "EXPIRED";
-          //calculate minutes and seconds
-        } else {
+            clearInterval(x);
+            if (timer) timer.innerHTML = "EXPIRED";
+            // Redirect to the end game page when time runs out
+            window.location.href = "endgamepage.html";
+          }
+          else {
           const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((distance % (1000 * 60)) / 1000);
           if (timer) timer.innerHTML = `${minutes}m ${seconds}s`;
@@ -295,25 +297,35 @@ console.log(`- Passages: ${passages}`);
 
     //function to select the murderer, weapon and room
     function pickSecretCards() {
-      //select randomly for each one
-      //Math.random() gives a random number between 0 and 1
-      //this number is then multiplied by the number of suspects
-      //Math.floor makes the number a whole number which corresponds to a position in the arrays 
-      secretSuspect = suspects[Math.floor(Math.random() * suspects.length)];
-      secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
-      secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
+        if (
+          localStorage.getItem("cluedoSuspect") &&
+          localStorage.getItem("cluedoWeapon") &&
+          localStorage.getItem("cluedoRoom")
+        ) {
+          // Load if already stored
+          secretSuspect = localStorage.getItem("cluedoSuspect");
+          secretWeapon = localStorage.getItem("cluedoWeapon");
+          secretRoom = localStorage.getItem("cluedoRoom");
+        } else {
+          // Otherwise, pick randomly
+          secretSuspect = suspects[Math.floor(Math.random() * suspects.length)];
+          secretWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+          secretRoom = rooms[Math.floor(Math.random() * rooms.length)];
 
-      console.log("Secret Solution:", secretSuspect, secretWeapon, secretRoom);
+          console.log("Secret Solution (NEW):", secretSuspect, secretWeapon, secretRoom);
 
-      localStorage.setItem("cluedoSuspect", secretSuspect);
-      localStorage.setItem("cluedoWeapon", secretWeapon);
-      localStorage.setItem("cluedoRoom", secretRoom);
+          localStorage.setItem("cluedoSuspect", secretSuspect);
+          localStorage.setItem("cluedoWeapon", secretWeapon);
+          localStorage.setItem("cluedoRoom", secretRoom);
+        }
 
-      // Remove the solution cards from the remaining options
-      remainingSuspects = suspects.filter(s => s !== secretSuspect);
-      remainingWeapons = weapons.filter(w => w !== secretWeapon);
-      remainingRooms = rooms.filter(r => r !== secretRoom);
+        //remove solution from the guessable lists
+        remainingSuspects = suspects.filter(s => s !== secretSuspect);
+        remainingWeapons = weapons.filter(w => w !== secretWeapon);
+        remainingRooms = rooms.filter(r => r !== secretRoom);
     }
+
+
 
 
     //saves the selected character to local storage
@@ -463,45 +475,43 @@ console.log(`- Passages: ${passages}`);
   };
 
   window.submitGuess = function () {
-    //gets the character and the weapon guessed by the player
     const character = document.getElementById("guessCharacter").value;
     const weapon = document.getElementById("guessWeapon").value;
 
-    // Check guess against remaining suspects
+    // Check guess against suspects
     if (remainingSuspects.includes(character)) {
       alert(`The card shown to you is: ${character}`);
-      //remove character from remaining list
-      remainingSuspects = remainingSuspects.filter(s => s !== character);
     }
-
-    // Check guess against remaining weapons
+    // Check guess against weapons
     else if (remainingWeapons.includes(weapon)) {
       alert(`The card shown to you is: ${weapon}`);
-      //remove weapon from remaining list
-      remainingWeapons = remainingWeapons.filter(w => w !== weapon);
     }
-
-    // Check if current room name contains any of the room names in the list
+    // Check guess against rooms
     else {
       const matchedRoom = remainingRooms.find(room => currentRoom.includes(room));
       if (matchedRoom) {
         alert(`The card shown to you is: ${matchedRoom}`);
-        remainingRooms = remainingRooms.filter(r => r !== matchedRoom);
       } else {
         alert("None of your guesses are in the list.");
       }
     }
 
     document.getElementById("guessPopup").style.display = "none";
-  };
+};
+
 
 //function to let player make final accusation 
 function checkAccusation() {
+  // Re-fetch secret cards from localStorage every time
+  const storedSuspect = localStorage.getItem("cluedoSuspect");
+  const storedWeapon = localStorage.getItem("cluedoWeapon");
+  const storedRoom = localStorage.getItem("cluedoRoom");
+
   const char = document.getElementById("accuseCharacter").value;
   const weapon = document.getElementById("accuseWeapon").value;
   const room = document.getElementById("accuseRoom").value;
 
-  if (char === secretSuspect && weapon === secretWeapon && room === secretRoom) {
+  if (char === storedSuspect && weapon === storedWeapon && room === storedRoom) {
     alert("Correct! You solved the mystery!");
     wins += 1;
     localStorage.setItem("wins", wins);
@@ -513,6 +523,7 @@ function checkAccusation() {
     document.getElementById("accusationPopup").style.display = "none";
   }
 }
+
 
 
 function closeAccusation() {
