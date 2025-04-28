@@ -17,8 +17,8 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('background3.png');
-  background-size: cover;         /* Makes it cover the entire screen */
-  background-repeat: no-repeat;   /* Prevents tiling */
+  background-size: cover;         
+  background-repeat: no-repeat;  
   background-attachment: fixed;
   background-position: center;
 }
@@ -239,12 +239,10 @@ p {
   color: #fff;
   font-size: 18px;
   padding: 0px;
-  text-decoration: none;
 }
 
 .butn:hover {
   background: #232931;
-  text-decoration: none;
 }
 
 .diceSection {
@@ -310,7 +308,7 @@ hr {
 }
 
 .arrow-controls button img {
-  width: 30px;  /* adjust size as needed */
+  width: 30px;  
   height: auto;
 }
 
@@ -458,7 +456,7 @@ hr {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1000; /* ensures it stays on top of other elements */
+  z-index: 1000;
 }
 
 .recordIcon img {
@@ -470,7 +468,7 @@ hr {
   position: absolute;
   top: 20px;
   left: 150px;
-  z-index: 1000; /* ensures it stays on top of other elements */
+  z-index: 1000; 
 }
 
 .cardsIcon img {
@@ -544,7 +542,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px; /* adjust spacing as needed */
+  margin-top: 50px; 
 }
 
 .card-container {
@@ -604,7 +602,7 @@ hr {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1000; /* ensures it stays on top of other elements */
+  z-index: 1000; 
 }
 
 .homeIcon img {

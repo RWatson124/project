@@ -16,14 +16,12 @@
 <body>
 
 <audio id="backgroundMusic" src="Ziggy - Hide and Sneak.mp3" autoplay loop></audio>
+
 <div class="header">
   <img src="thumb.jpg" alt="Cluedo thumbnail">
   <h1>Cluedo</h1>
 </div>  
 
-
-
-<p id="demo"></p>
 <hr>
 
 <h2 class="characterAndCards-heading">Your Cards</h2>
@@ -35,42 +33,37 @@
 
 <script>
     window.onload = function () {
-  const container = document.getElementById("cardContainer");
+      const container = document.getElementById("cardContainer");
 
-  // Generate an array of card filenames
-  const allCards = [];
-  for (let i = 1; i <= 21; i++) {
-    allCards.push(`card${i}.png`);
-  }
+      // Generate an array of card filenames
+      const allCards = [];
+      for (let i = 1; i <= 21; i++) {
+        allCards.push(`card${i}.png`);
+      }
 
-  // Shuffle cards
-  const shuffled = allCards.sort(() => 0.5 - Math.random());
+      // Shuffle cards
+      const shuffled = allCards.sort(() => 0.5 - Math.random());
 
-  // Pick 6 cards
-  const selected = shuffled.slice(0, 6);
+      // Pick 6 cards
+      const selected = shuffled.slice(0, 6);
 
-  // Save to localStorage if needed
-  localStorage.setItem("selectedCards", JSON.stringify(selected));
+      // Save to localStorage
+      localStorage.setItem("selectedCards", JSON.stringify(selected));
 
-  // Display selected cards
-  selected.forEach(card => {
-    const img = document.createElement("img");
-    img.src = `cards/${card}`;
-    img.alt = card;
-    img.className = "card-img";
-    container.appendChild(img);
-  });
-};
-
-
+      // Display selected cards
+      selected.forEach(card => {
+        const img = document.createElement("img");
+        img.src = `cards/${card}`;
+        img.alt = card;
+        img.className = "card-img";
+        container.appendChild(img);
+      });
+    };
 
 
 
 
 </script>
-
-
-
 
 
 
